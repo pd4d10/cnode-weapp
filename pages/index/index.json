@@ -1,1 +1,4 @@
-{}
+{
+    "navigationBarTitleText": "帖子",
+    "enablePullDownRefresh": true
+}
