@@ -4,7 +4,7 @@ Page({
   data: {
     messages: []
   },
-  onLoad(options) {
+  onReady(options) {
     const { token } = app.globalData
     if (!token) {
       wx.scanCode({
@@ -39,9 +39,6 @@ Page({
         },
       })
     }
-  },
-  onReady:function(){
-    // 页面渲染完成
   },
   onShow:function(){
     // 页面显示
