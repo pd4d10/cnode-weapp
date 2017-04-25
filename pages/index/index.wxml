@@ -1,8 +1,15 @@
+<import src="/bower_components/zanui-weapp/dist/tab/index.wxml" />
+<import src="/bower_components/zanui-weapp/dist/loadmore/index.wxml" />
+
 <view class="container">
+  <view class="tab">
+    <template is="zan-tab" data="{{tab: tab, componentId: 'tab'}}"></template>
+  </view>
   <scroll-view
     class="list"
-    scroll-y bindscrolltolower="loadMore"
-    style="height: {{windowHeight}}px"
+    scroll-y
+    bindscrolltolower="loadMore"
+    bindscroll="test"
     lower-threshold="200"
     enable-back-to-top
     scroll-with-animation
@@ -22,6 +29,6 @@
         </view>
       </view>
     </navigator>
-    <text hidden="{{isLoading}}">正在加载。。。</text>
+    <template is="zan-loadmore" data="{{loading: true}}" />
   </scroll-view>
 </view>

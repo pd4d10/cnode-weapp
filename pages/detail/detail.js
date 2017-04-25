@@ -14,12 +14,12 @@ Page({
         })
         WxParse.wxParse('content', 'html', res.data.data.content, this, 5)
       },
-      fail: function(res) {
+      fail(res) {
         wx.showToast({
           title: '错误'
         })
       },
-      complete: function(res) {
+      complete(res) {
         // complete
       }
     })

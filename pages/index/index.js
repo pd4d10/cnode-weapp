@@ -1,12 +1,62 @@
-Page({
+import Tab from '../../bower_components/zanui-weapp/dist/tab/index'
+
+Page(Object.assign({}, Tab, {
+  test: console.log,
   data: {
     isLoading: false,
     page: 1,
-    topics: []
+    topics: [],
+    tab: {
+      list: [
+        {
+          id: 'all',
+          title: '全部'
+        }, {
+          id: 'good',
+          title: '精华'
+        }, {
+          id: 'share',
+          title: '分享'
+        }, {
+          id: 'ask',
+          title: '问答'
+        }, {
+          id: 'job',
+          title: '招聘'
+        }
+      ],
+      selectedId: 'all',
+      scroll: false
+    }
+  },
+  handleZanTabChange(e) { // For zanui tab
+    var componentId = e.componentId;
+    var selectedId = e.selectedId;
+
+    if (selectedId === this.data.tab.selectedId) {
+      return
+    }
+
+    this.setData({
+      [`${componentId}.selectedId`]: selectedId,
+      isLoading: true,
+      topics: [],
+    })
+    this.requestTopics({
+      success: res => {
+        this.setData({
+          isLoading: false,
+          page: 1,
+          topics: res.data.data
+        })
+      }
+    })
   },
   requestTopics({ page = 1, success, fail }) {
+    const tab = this.data.tab.selectedId
+    const queryTab = tab === 'all' ? '' : `&tab=${tab}`
     wx.requestCNode({
-      url: `/topics?tab=all&limit=20&page=${page}`,
+      url: `/topics?limit=15&page=${page}${queryTab}`,
       success,
       fail,
     })
@@ -71,4 +121,4 @@ Page({
       }
     })
   },
-})
+}))
