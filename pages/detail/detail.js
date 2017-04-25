@@ -1,3 +1,5 @@
+var WxParse = require('../../wxParse/wxParse.js')
+
 // pages/detail/detail.js
 Page({
   data: {
@@ -10,6 +12,7 @@ Page({
         this.setData({
           topic: res.data.data,
         })
+        WxParse.wxParse('content', 'html', res.data.data.content, this, 5)
       },
       fail: function(res) {
         wx.showToast({

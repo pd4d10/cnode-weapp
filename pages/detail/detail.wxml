@@ -1,3 +1,5 @@
+<import src="../../wxParse/wxParse.wxml"/> 
+
 <view wx:if="{{topic}}">
   <text class="title">{{topic.title}}</text>
   <view class="user">
@@ -6,6 +8,6 @@
       <text>{{topic.author.loginname}}</text>
       <text>{{topic.create_at}}</text>
     </view>
-    <view>{{topic.content}}</view>
   </view>
+  <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
 </view>
