@@ -72,9 +72,15 @@ Page({
   onLoad() {
     this.setData({
       isLoading: true,
+      windowHeight: app.globalData.windowHeight,
+    })
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
     })
     fetchTopics()
       .then(topics => {
+        wx.hideToast()
         this.setData({
           isLoading: false,
           topics: topics

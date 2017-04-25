@@ -4,6 +4,9 @@ App({
         if (token) {
             this.globalData.token = token
         }
+
+        const { windowHeight } = wx.getSystemInfoSync()
+        this.globalData.windowHeight = windowHeight
     },
     // getUserInfo: function (cb) {
     //     var that = this;
@@ -24,6 +27,6 @@ App({
     //     }
     // },
     globalData: {
-        token: null,
+        token: undefined,
     }
 })

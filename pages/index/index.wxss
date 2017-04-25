@@ -1,33 +1,64 @@
-.topic-list {
+.container {
+  height: 100%;
   display: flex;
-  width: 100%;
-  height: 200px;
 }
 
-.topic-container {
+.list {
+  display: flex;
+}
+
+.link {
+  width: 750rpx;
   padding: 24rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eee;
   display: flex;
-  border-bottom: 1px solid #eee;
 }
 
-.topic-avatar {
-  display: flex;
-  flex-basis: 128rpx;
-  height: 128rpx;
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
   border-radius: 50%;
+  margin-right: 20rpx;
+  display: flex;
 }
 
-.topic-content {
+.content {
+  padding: 10rpx 0;
   display: flex;
   flex-direction: column;
 }
 
-.topic-title {
+.title {
+  width: 570rpx;
+  font-size: 36rpx;
+  color: #333;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  margin-bottom: 20rpx;
 }
 
-.topic-sub-content {
+.sub-content {
   display: flex;
+}
+
+.tag {
+  background: #80bd01;
+  padding: 4rpx 8rpx;
+  border-radius: 6rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.sub-sub-content {
+  font-size: 24rpx;
+}
+
+.reply {
+  color: #9e78c0;
+}
+
+.visit {
+  color: #b4b4b4;
 }
