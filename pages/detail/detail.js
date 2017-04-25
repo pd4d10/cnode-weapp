@@ -1,4 +1,4 @@
-var WxParse = require('../../wxParse/wxParse.js')
+import WxParse from '../../bower_components/wxParse/wxParse/wxParse.js'
 
 // pages/detail/detail.js
 Page({

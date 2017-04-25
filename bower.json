@@ -1,0 +1,22 @@
+{
+  "name": "cnode-weapp",
+  "homepage": "https://github.com/pd4d10/cnode-weapp",
+  "authors": [
+    "pd4d10 <pd4d10@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "zanui-weapp": "youzan/zanui-weapp#^2.1.0",
+    "wxParse": "icindy/wxParse"
+  }
+}

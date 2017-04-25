@@ -30,7 +30,7 @@
 }
 
 .title {
-  width: 570rpx;
+  width: 500rpx;
   font-size: 36rpx;
   color: #333;
   white-space: nowrap;

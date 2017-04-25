@@ -1,4 +1,4 @@
-<import src="../../wxParse/wxParse.wxml"/> 
+<import src="../../bower_components/wxParse/wxParse/wxParse.wxml"/> 
 
 <view wx:if="{{topic}}">
   <text class="title">{{topic.title}}</text>
