@@ -7,10 +7,6 @@
   flex-direction: column;
 }
 
-.list {
-  display: flex;
-}
-
 .link {
   width: 750rpx;
   padding: 24rpx;

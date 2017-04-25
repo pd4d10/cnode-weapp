@@ -5,15 +5,7 @@
   <view class="tab">
     <template is="zan-tab" data="{{tab: tab, componentId: 'tab'}}"></template>
   </view>
-  <scroll-view
-    class="list"
-    scroll-y
-    bindscrolltolower="loadMore"
-    bindscroll="test"
-    lower-threshold="200"
-    enable-back-to-top
-    scroll-with-animation
-  >
+  <view>
     <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{topics}}" wx:key="id" class="link">
       <image class="avatar" src="{{item.author.avatar_url}}" mode="scaleToFill" />
       <view class="content">
@@ -30,5 +22,5 @@
       </view>
     </navigator>
     <template is="zan-loadmore" data="{{loading: true}}" />
-  </scroll-view>
+  </view>
 </view>

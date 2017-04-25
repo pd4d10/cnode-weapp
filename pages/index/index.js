@@ -1,7 +1,6 @@
 import Tab from '../../bower_components/zanui-weapp/dist/tab/index'
 
 Page(Object.assign({}, Tab, {
-  test: console.log,
   data: {
     isLoading: false,
     page: 1,
@@ -52,28 +51,48 @@ Page(Object.assign({}, Tab, {
       }
     })
   },
-  requestTopics({ page = 1, success, fail }) {
+  requestTopics({ page = 1, success, fail, complete }) {
     const tab = this.data.tab.selectedId
     const queryTab = tab === 'all' ? '' : `&tab=${tab}`
     wx.requestCNode({
       url: `/topics?limit=15&page=${page}${queryTab}`,
       success,
       fail,
+      complete,
     })
   },
   onPullDownRefresh() {
-    // this.setData({
-    //   isLoading: true,
-    // })
-    // requestTopics(1)
-    //   .then(topics => {
-    //     this.setData({
-    //       isLoading: false,
-    //       topics,
-    //       page: 1,
-    //     })
-    //     wx.stopPullDownRefresh()
-    //   })
+    this.setData({
+      isLoading: true,
+    })
+    this.requestTopics({
+      page: 1,
+      success: (res) => {
+        wx.showToast({
+          title: '已更新'
+        })
+        this.setData({
+          isLoading: false,
+          topics: res.data.data
+        })
+      },
+      fail() {
+        wx.showToast({
+          title: '刷新失败'
+        })
+      },
+      complete() {
+        wx.stopPullDownRefresh()
+      }
+    })
+      .then(topics => {
+        this.setData({
+          isLoading: false,
+          topics,
+          page: 1,
+        })
+        wx.stopPullDownRefresh()
+      })
   },
   onLoad() {
     const { windowHeight } = getApp().globalData
@@ -98,7 +117,8 @@ Page(Object.assign({}, Tab, {
       }
     })
   },
-  loadMore(e) {
+  onReachBottom(e) {
+    console.log(e)
     if (this.data.isLoading) {
       return
     }

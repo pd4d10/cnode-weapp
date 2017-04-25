@@ -1,1 +1,1 @@
-@import "../../bower_components/wxParse/wxParse/wxParse.wxss";
+@import "/bower_components/wxParse/wxParse/wxParse.wxss";
