@@ -42,11 +42,37 @@ Page({
     page: 1,
     topics: []
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
+  onPullDownRefresh() {
+    this.setData({
+      isLoading: true,
     })
+    fetchTopics(1)
+      .then(topics => {
+        this.setData({
+          isLoading: false,
+          topics,
+          page: 1,
+        })
+        wx.stopPullDownRefresh()
+      })
+  },
+  onLoad() {
+    this.setData({
+      isLoading: true,
+      windowHeight: app.globalData.windowHeight,
+    })
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+    })
+    fetchTopics()
+      .then(topics => {
+        wx.hideToast()
+        this.setData({
+          isLoading: false,
+          topics: topics
+        })
+      })
   },
   loadMore(e) {
     if (this.data.isLoading) {
@@ -69,22 +95,4 @@ Page({
         })
       })
   },
-  onLoad() {
-    this.setData({
-      isLoading: true,
-      windowHeight: app.globalData.windowHeight,
-    })
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-    })
-    fetchTopics()
-      .then(topics => {
-        wx.hideToast()
-        this.setData({
-          isLoading: false,
-          topics: topics
-        })
-      })
-  }
 })

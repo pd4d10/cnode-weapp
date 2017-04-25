@@ -1,2 +1,11 @@
-<!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<view wx:if="{{topic}}">
+  <text class="title">{{topic.title}}</text>
+  <view class="user">
+    <image src="{{topic.author.avatar_url}}" />
+    <view class="user-info">
+      <text>{{topic.author.loginname}}</text>
+      <text>{{topic.create_at}}</text>
+    </view>
+    <view>{{topic.content}}</view>
+  </view>
+</view>

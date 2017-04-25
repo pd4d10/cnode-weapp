@@ -1,8 +1,25 @@
 // pages/detail/detail.js
 Page({
-  data:{},
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+  data: {
+    topic: null,
+  },
+  onLoad(options) {
+    wx.request({
+      url: `https://cnodejs.org/api/v1/topic/${options.id}`,
+      success: (res) => {
+        this.setData({
+          topic: res.data.data,
+        })
+      },
+      fail: function(res) {
+        wx.showToast({
+          title: '错误'
+        })
+      },
+      complete: function(res) {
+        // complete
+      }
+    })
   },
   onReady:function(){
     // 页面渲染完成
