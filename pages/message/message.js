@@ -2,23 +2,24 @@ const app = getApp()
 
 Page({
   data: {
-    unread: [],
-    read: [],
+    messages: []
   },
   onLoad(options) {
     const { token } = app.globalData
     if (!token) {
       wx.scanCode({
-        success: function(res){
-          app.globalData.token = res.data
+        success: (res) => {
+          app.globalData.token = res.result
 
           wx.request({
-            url: `https://cnodejs.org/api/v1/messages?accesstoken=${token}`,
+            url: `https://cnodejs.org/api/v1/messages?accesstoken=${app.globalData.token}`,
             success: (res) => {
-              const { data } = res
+              const { data } = res.data
               this.setData({
-                 read: data.has_read_messages,
-                 unread: data.hasnot_read_messages,
+                 messages: [
+                   ...data.hasnot_read_messages,
+                   ...data.has_read_messages,
+                 ]
               })
             },
             fail(err) {
@@ -28,7 +29,7 @@ Page({
             }
           })
         },
-        fail: function(res) {
+        fail(res) {
           wx.showToast({
             title: '扫码失败，请重试'
           })

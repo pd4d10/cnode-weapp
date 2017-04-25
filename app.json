@@ -2,7 +2,8 @@
     "pages": [
         "pages/index/index",
         "pages/detail/detail",
-        "pages/message/message"
+        "pages/message/message",
+        "pages/me/me"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -14,11 +15,15 @@
         "list": [
             {
                 "pagePath": "pages/index/index",
-                "text": "首页"
+                "text": "社区"
             },
             {
                 "pagePath": "pages/message/message",
                 "text": "消息"
+            },
+            {
+                "pagePath": "pages/me/me",
+                "text": "我的"
             }
         ]
     }

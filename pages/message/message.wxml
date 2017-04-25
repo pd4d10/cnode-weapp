@@ -1,2 +1,5 @@
-<!--pages/message/message.wxml-->
-<text>pages/message/message.wxml</text>
+<scroll-view>
+    <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{messages}}" wx:key="id">
+        <text>{{item.topic.title}}</text>
+    </navigator>
+</scroll-view>

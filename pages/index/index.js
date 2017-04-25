@@ -70,9 +70,13 @@ Page({
       })
   },
   onLoad() {
+    this.setData({
+      isLoading: true,
+    })
     fetchTopics()
       .then(topics => {
         this.setData({
+          isLoading: false,
           topics: topics
         })
       })
