@@ -10,7 +10,7 @@
   </view>
   <template is="wxParse" data="{{wxParseData:content.nodes}}" />
   <view class="reply-title">共 {{topic.reply_count}} 条回复</view>
-  <view class="reply" wx:for="{{topic.replies}}" wx:key="id">
+  <view class="reply" wx:for="{{replies}}" wx:key="id">
     <view class="reply-user">
       <image class="reply-avatar" src="{{item.author.avatar_url}}" />
       <view class="reply-user-info">
@@ -18,6 +18,6 @@
         <view class="reply-time">{{reply_create_at[index]}}</view>
       </view>
     </view>
-    <template is="wxParse" data="{{wxParseData:replies[index].nodes}}" wx:if="{{replies}}" />
+    <template is="wxParse" data="{{wxParseData:replies_html[index].nodes}}" />
   </view>
 </view>
