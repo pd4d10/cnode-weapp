@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "zanui-weapp": "youzan/zanui-weapp#^2.1.0",
-    "wxParse": "icindy/wxParse"
+    "wxParse": "icindy/wxParse",
+    "timeago.js": "^3.0.0"
   }
 }

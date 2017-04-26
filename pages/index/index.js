@@ -1,4 +1,6 @@
 import Tab from '../../bower_components/zanui-weapp/dist/tab/index'
+import timeago from '../../bower_components/timeago.js/dist/timeago'
+const timeagoInstance = timeago()
 
 Page(Object.assign({}, Tab, {
   data: {
@@ -28,6 +30,12 @@ Page(Object.assign({}, Tab, {
       scroll: false
     }
   },
+  format(topics) {
+    return topics.map(topic => {
+      topic.time = timeagoInstance.format(topic.create_at, 'zh_CN')
+      return topic
+    })
+  },
   handleZanTabChange(e) { // For zanui tab
     var componentId = e.componentId;
     var selectedId = e.selectedId;
@@ -50,7 +58,7 @@ Page(Object.assign({}, Tab, {
         this.setData({
           isLoading: false,
           page: 1,
-          topics: res.data.data
+          topics: this.format(res.data.data)
         })
         wx.hideToast()
       }
@@ -78,7 +86,7 @@ Page(Object.assign({}, Tab, {
         })
         this.setData({
           isLoading: false,
-          topics: res.data.data
+          topics: this.format(res.data.data)
         })
       },
       fail() {
@@ -90,21 +98,10 @@ Page(Object.assign({}, Tab, {
         wx.stopPullDownRefresh()
       }
     })
-      .then(topics => {
-        this.setData({
-          isLoading: false,
-          topics,
-          page: 1,
-        })
-        wx.stopPullDownRefresh()
-      })
   },
   onLoad() {
-    const { windowHeight } = getApp().globalData
-
     this.setData({
       isLoading: true,
-      windowHeight,
     })
 
     wx.showToast({
@@ -117,13 +114,12 @@ Page(Object.assign({}, Tab, {
         wx.hideToast()
         this.setData({
           isLoading: false,
-          topics: res.data.data
+          topics: this.format(res.data.data)
         })
       }
     })
   },
-  onReachBottom(e) {
-    console.log(e)
+  onReachBottom() {
     if (this.data.isLoading) {
       return
     }
@@ -140,7 +136,7 @@ Page(Object.assign({}, Tab, {
           page: this.data.page + 1,
           topics: [
             ...this.data.topics,
-            ...res.data.data,
+            ...this.format(res.data.data),
           ]
         })
       }

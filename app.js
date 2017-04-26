@@ -46,7 +46,7 @@ App({
     },
     saveWindowHeight() {
         // For scroll view height
-        const { windowHeight } = wx.getSystemInfoSync()
-        this.globalData.windowHeight = windowHeight
+        // const { windowHeight } = wx.getSystemInfoSync()
+        // this.globalData.windowHeight = windowHeight
     },
 })

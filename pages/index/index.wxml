@@ -18,6 +18,7 @@
             <text class="visit">{{item.visit_count}}</text>
             浏览
           </view>
+          <text class="time">{{item.time}}</text>
         </view>
       </view>
     </navigator>

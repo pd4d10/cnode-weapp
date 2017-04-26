@@ -8,57 +8,61 @@
 }
 
 .link {
-  width: 750rpx;
   padding: 24rpx;
   box-sizing: border-box;
-  border-bottom: 1rpx solid #eee;
-  display: flex;
+  border-bottom: 2rpx solid #eee;
 }
 
 .avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 96rpx;
+  height: 96rpx;
   border-radius: 50%;
   margin-right: 20rpx;
-  display: flex;
+  float: left;
 }
 
 .content {
-  padding: 10rpx 0;
+  height: 96rpx;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .title {
-  width: 500rpx;
-  font-size: 36rpx;
+  /*width: 500rpx;*/
+  font-size: 32rpx;
+  line-height: 48rpx;
   color: #333;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin-bottom: 20rpx;
 }
 
 .sub-content {
   display: flex;
+  align-items: center;
+  font-size: 24rpx;
 }
 
 .tag {
   background: #80bd01;
-  padding: 4rpx 8rpx;
-  border-radius: 6rpx;
+  padding: 0 8rpx;
+  border-radius: 4rpx;
   color: #fff;
-  font-size: 24rpx;
+  line-height: 40rpx;
+  margin-right: 16rpx;
 }
 
 .sub-sub-content {
-  font-size: 24rpx;
+  color: #b4b4b4;
 }
 
 .reply {
   color: #9e78c0;
 }
 
-.visit {
-  color: #b4b4b4;
+.time {
+  flex-grow: 1;
+  text-align: right;
+  color: #778087;
 }
