@@ -1,6 +1,7 @@
-import WxParse from '../../bower_components/wxParse/wxParse/wxParse.js'
+import { wxParse } from '../../bower_components/wxParse/wxParse/wxParse.js'
+import timeago from '../../bower_components/timeago.js/dist/timeago'
+const timeagoInstance = timeago()
 
-// pages/detail/detail.js
 Page({
   data: {
     topic: null,
@@ -11,8 +12,16 @@ Page({
       success: (res) => {
         this.setData({
           topic: res.data.data,
+          create_at: timeagoInstance.format(res.data.data.create_at, 'zh_CN'),
+          reply_create_at: res.data.data.replies.map(reply => {
+            return timeagoInstance.format(reply.create_at)
+          })
         })
-        WxParse.wxParse('content', 'html', res.data.data.content, this, 5)
+        // Render HTML
+        wxParse('content', 'html', res.data.data.content, this, 5)
+        res.data.data.replies.forEach((reply, i) => {
+          wxParse(`replies[${i}]`, 'html', reply.content, this, 5)
+        })
       },
       fail(res) {
         wx.showToast({
@@ -24,16 +33,4 @@ Page({
       }
     })
   },
-  onReady:function(){
-    // 页面渲染完成
-  },
-  onShow:function(){
-    // 页面显示
-  },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
-  }
 })

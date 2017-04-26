@@ -1,13 +1,23 @@
-<import src="/bower_components/wxParse/wxParse/wxParse.wxml"/> 
-
-<view wx:if="{{topic}}">
-  <text class="title">{{topic.title}}</text>
+<import src="/bower_components/wxParse/wxParse/wxParse.wxml" />
+<view wx:if="{{topic}}" class="container">
+  <view class="title">{{topic.title}}</view>
   <view class="user">
-    <image src="{{topic.author.avatar_url}}" />
+    <image class="avatar" src="{{topic.author.avatar_url}}" />
     <view class="user-info">
-      <text>{{topic.author.loginname}}</text>
-      <text>{{topic.create_at}}</text>
+      <text class="name">{{topic.author.loginname}}</text>
+      <text class="create-at">创建于{{create_at}} {{topic.visit_count}} 次浏览</text>
     </view>
   </view>
-  <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+  <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+  <view class="reply-title">共 {{topic.reply_count}} 条回复</view>
+  <view class="reply" wx:for="{{topic.replies}}" wx:key="id">
+    <view class="reply-user">
+      <image class="reply-avatar" src="{{item.author.avatar_url}}" />
+      <view class="reply-user-info">
+        <view class="reply-name">{{item.author.loginname}}</view>
+        <view class="reply-time">{{reply_create_at[index]}}</view>
+      </view>
+    </view>
+    <template is="wxParse" data="{{wxParseData:replies[index].nodes}}" wx:if="{{replies}}" />
+  </view>
 </view>
