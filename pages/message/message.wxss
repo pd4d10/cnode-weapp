@@ -8,12 +8,12 @@
 
 .container {
   color: #333;
-  font-size: 32rpx;
+  font-size: 30rpx;
 }
 
 .link {
   border-bottom: 1rpx solid #eee;
-  padding: 32rpx;
+  padding: 30rpx;
 }
 
 .author {
@@ -22,7 +22,7 @@
 
 .title {
   width: 700rpx;
-  font-size: 36rpx;
+  font-size: 32rpx;
   color: #08c;
   white-space: nowrap;
   text-overflow: ellipsis;

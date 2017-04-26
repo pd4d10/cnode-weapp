@@ -13,18 +13,26 @@
         "enablePullDownRefresh": true
     },
     "tabBar": {
+        "color": "#7a7e83",
+        "selectedColor": "#80bd01",
         "list": [
             {
                 "pagePath": "pages/index/index",
-                "text": "社区"
+                "text": "社区",
+                "iconPath": "icons/index.png",
+                "selectedIconPath": "icons/index-active.png"
             },
             {
                 "pagePath": "pages/message/message",
-                "text": "消息"
+                "text": "消息",
+                "iconPath": "icons/message.png",
+                "selectedIconPath": "icons/message-active.png"
             },
             {
                 "pagePath": "pages/me/me",
-                "text": "我的"
+                "text": "我的",
+                "iconPath": "icons/me.png",
+                "selectedIconPath": "icons/me-active.png"
             }
         ]
     }
