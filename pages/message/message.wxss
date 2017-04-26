@@ -5,3 +5,27 @@
   position: fixed;
   width: 100%;
 }
+
+.container {
+  color: #333;
+  font-size: 32rpx;
+}
+
+.link {
+  border-bottom: 1rpx solid #eee;
+  padding: 32rpx;
+}
+
+.author {
+  color: #08c;
+}
+
+.title {
+  width: 700rpx;
+  font-size: 36rpx;
+  color: #08c;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-top: 20rpx;
+}
