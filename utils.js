@@ -20,7 +20,18 @@ export function getToken(cb) {
                         url: '/accesstoken',
                         method: 'POST',
                         data: { accesstoken },
-                        success(res) {  
+                        success(res) {
+                            // Invalid token
+                            if (!res.data.success) {
+                                wx.showToast({
+                                    title: 'token 不正确'
+                                })
+                                wx.removeStorage({
+                                  key: 'token',
+                                })
+                                return
+                            }
+
                             // Valid token, save user info
                             app.globalData.token = accesstoken
                             app.globalData.loginname = res.data.loginname
@@ -33,7 +44,7 @@ export function getToken(cb) {
                         },
                         fail(res) {
                             wx.showToast({
-                                title: 'token 不正确'
+                                title: res.errMsg
                             })
                         },
                         complete(res) {

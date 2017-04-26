@@ -24,16 +24,18 @@ App({
                     method: 'POST',
                     data: { accesstoken },
                     success: (res) => {
+                        if (!res.data.success) {
+                            // Invalid token, delete it from storage
+                            wx.removeStorage({
+                                key: 'token'
+                            })
+                            return
+                        }
+
                         // Valid token, save user info
                         this.globalData.token = accesstoken
                         this.globalData.loginname = res.data.loginname
                         this.globalData.avatar_url = res.data.avatar_url
-                    },
-                    fail: res => {
-                        // Invalid token, delete it from storage
-                        wx.removeStorage({
-                            key: 'token'
-                        })
                     }
                 })
             },
