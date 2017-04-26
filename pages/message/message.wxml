@@ -1,5 +1,8 @@
-<scroll-view>
-    <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{messages}}" wx:key="id">
-        <text>{{item.topic.title}}</text>
-    </navigator>
-</scroll-view>
+<view class="container" wx:if="{{verified}}">
+  <navigator url="/pages/detail/detail?id={{item.id}}" wx:for="{{messages}}" wx:key="id">
+    <text>{{item.topic.title}}</text>
+  </navigator>
+</view>
+<view class="button-container" wx:if="{{!verified}}" >
+  <button bindtap="login" type="primary">扫码登录</button>
+</view>

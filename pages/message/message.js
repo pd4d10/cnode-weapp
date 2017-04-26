@@ -2,15 +2,20 @@ import { getToken } from '../../utils'
 
 Page({
   data: {
-    messages: []
+    messages: [],
+    verified: false,
   },
   onReady(options) {
+    this.login()
+  },
+  login() {
     getToken((token) => {
       wx.requestCNode({
         url: `/messages?accesstoken=${token}`,
         success: (res) => {
           const { data } = res.data
           this.setData({
+            verified: true,
             messages: [
               ...data.hasnot_read_messages,
               ...data.has_read_messages,

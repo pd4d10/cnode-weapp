@@ -39,7 +39,11 @@ Page(Object.assign({}, Tab, {
     this.setData({
       [`${componentId}.selectedId`]: selectedId,
       isLoading: true,
-      topics: [],
+    })
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      mask: true,
     })
     this.requestTopics({
       success: res => {
@@ -48,6 +52,7 @@ Page(Object.assign({}, Tab, {
           page: 1,
           topics: res.data.data
         })
+        wx.hideToast()
       }
     })
   },
@@ -78,7 +83,7 @@ Page(Object.assign({}, Tab, {
       },
       fail() {
         wx.showToast({
-          title: '刷新失败'
+          title: '更新失败'
         })
       },
       complete() {

@@ -1,1 +1,7 @@
-/* pages/message/message.wxss */
+.button-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+}
