@@ -1,6 +1,3 @@
-@import '/bower_components/zanui-weapp/dist/tab/index.wxss';
-@import '/bower_components/zanui-weapp/dist/loadmore/index.wxss';
-
 .container {
   height: 100%;
   display: flex;

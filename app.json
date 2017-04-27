@@ -7,10 +7,9 @@
     ],
     "window": {
         "backgroundTextStyle": "dark",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "WeChat",
-        "navigationBarTextStyle": "black",
-        "enablePullDownRefresh": true
+        "navigationBarBackgroundColor": "#444",
+        "navigationBarTitleText": "CNodeJS 社区",
+        "navigationBarTextStyle": "#fff"
     },
     "tabBar": {
         "color": "#7a7e83",

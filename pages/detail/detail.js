@@ -7,14 +7,14 @@ Page({
     end: true,
   },
   onLoad(options) {
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading'
-    })
+    wx.showNavigationBarLoading()
     wx.request({
       url: `https://cnodejs.org/api/v1/topic/${options.id}`,
       success: (res) => {
         const json = res.data.data
+        wx.setNavigationBarTitle({
+          title: json.title,
+        })
         this.setData({
           topic: json,
           create_at: formatTime(json.create_at),
@@ -25,11 +25,11 @@ Page({
           end: json.replies.length <= 10,
         })
         // Render HTML
-        wxParse('content', 'html', json.content, this, 5)
+        wxParse('content', 'html', json.content, this, 20)
         this.data.replies.forEach((reply, i) => {
-          wxParse(`replies_html[${i}]`, 'html', reply.content, this, 5)
+          wxParse(`replies_html[${i}]`, 'html', reply.content, this, 20)
         })
-        wx.hideToast()
+        wx.hideNavigationBarLoading()
       },
       fail(res) {
         wx.showToast({
@@ -52,7 +52,7 @@ Page({
       end: count + 10 >= this.data.topic.replies.length,
     })
     moreReplies.forEach((reply, i) => {
-      wxParse(`replies_html[${i + count}]`, 'html', reply.content, this, 5)
+      wxParse(`replies_html[${i + count}]`, 'html', reply.content, this, 20)
     })
   }
 })
