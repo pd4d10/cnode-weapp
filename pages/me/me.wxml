@@ -35,6 +35,13 @@
   </view>
 
   <view class="zan-panel">
+    <navigator url="/pages/source/source" class="zan-cell zan-cell--access">
+      <view class="zan-cell__bd">源代码</view>
+      <view class="zan-cell__ft"></view>
+    </navigator>
+  </view>
+
+  <view class="zan-panel">
     <view bindtap="exit" class="zan-cell zan-cell--access exit" hover hover-class="exit-active">
       <view class="zan-cell__bd exit">退出登录</view>
     </view>
