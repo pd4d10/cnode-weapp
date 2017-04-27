@@ -1,3 +1,10 @@
+import timeago from './bower_components/timeago.js/dist/timeago'
+const timeagoInstance = timeago()
+
+export function formatTime(time) {
+    return timeagoInstance.format(time, 'zh_CN')
+}
+
 export function getToken(cb) {
     const app = getApp()
 

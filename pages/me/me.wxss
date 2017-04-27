@@ -1,1 +1,41 @@
-/* pages/me/me.wxss */
+@import '/bower_components/zanui-weapp/dist/cell/index.wxss';
+@import '/bower_components/zanui-weapp/dist/panel/index.wxss';
+
+page {
+  background: #f9f9f9;
+}
+
+.user {
+  padding: 24rpx;
+  background: #fff;
+  border-bottom: 1rpx solid #eee;
+  margin-bottom: 40rpx;
+}
+
+.avatar {
+  float: left;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.info {
+  font-size: 32rpx;
+  height: 96rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.name {
+  line-height: 48rpx;
+}
+
+.more {
+  line-height: 48rpx;
+  color: #555;
+  font-size: 24rpx;
+  display: flex;
+  justify-content: space-between;
+}

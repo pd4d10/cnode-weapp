@@ -1,6 +1,5 @@
 import { wxParse } from '../../bower_components/wxParse/wxParse/wxParse.js'
-import timeago from '../../bower_components/timeago.js/dist/timeago'
-const timeagoInstance = timeago()
+import { formatTime } from '../../utils'
 
 Page({
   data: {
@@ -18,9 +17,9 @@ Page({
         const json = res.data.data
         this.setData({
           topic: json,
-          create_at: timeagoInstance.format(json.create_at, 'zh_CN'),
+          create_at: formatTime(json.create_at),
           reply_create_at: json.replies.map(reply => {
-            return timeagoInstance.format(reply.create_at)
+            return formatTime(reply.create_at)
           }),
           replies: json.replies.slice(0, 10),
           end: json.replies.length <= 10,

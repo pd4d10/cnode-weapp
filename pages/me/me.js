@@ -1,19 +1,24 @@
-// pages/me/me.js
+import { formatTime } from '../../utils'
+
 Page({
   data: {},
-  onLoad: function (options) {
-    // 页面初始化 options为页面跳转所带来的参数
-  },
-  onReady: function () {
-    // 页面渲染完成
-  },
-  onShow: function () {
-    // 页面显示
-  },
-  onHide: function () {
-    // 页面隐藏
-  },
-  onUnload: function () {
-    // 页面关闭
+  onLoad(options) {
+    const app = getApp()
+    const { loginname } = app.globalData
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+    })
+    wx.requestCNode({
+      url: `/user/${loginname}`,
+      success: (res) => {
+        const json = res.data.data
+        this.setData({
+          user: json,
+          time: formatTime(json.create_at)
+        })
+        wx.hideToast()
+      }
+    })
   }
 })

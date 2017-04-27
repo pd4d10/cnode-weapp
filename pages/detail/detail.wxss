@@ -2,7 +2,7 @@
 @import '/bower_components/zanui-weapp/dist/loadmore/index.wxss';
 
 .container {
-  padding: 24rpx;
+  padding: 24rpx 24rpx 0;
 }
 
 .title {
@@ -40,7 +40,7 @@
 }
 
 .markdown-text {
-  margin: 20rpx 0;
+  margin: 20rpx 0 12rpx;
 }
 
 /*Fix font size too large*/
@@ -65,8 +65,8 @@
 }
 
 .reply {
-  margin: 16rpx 0;
-  border-bottom: 2rpx solid #eee;
+  padding: 16rpx 0;
+  border-top: 2rpx solid #eee;
 }
 
 .reply-title {

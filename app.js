@@ -10,7 +10,6 @@ App({
     globalData: {},
     onLaunch() {
         this.checkToken()
-        this.saveWindowHeight()
     },
     checkToken() {
         // Try to get token from storage
@@ -44,9 +43,9 @@ App({
             }
         })
     },
-    saveWindowHeight() {
-        // For scroll view height
-        // const { windowHeight } = wx.getSystemInfoSync()
-        // this.globalData.windowHeight = windowHeight
-    },
+    fetchMessage(token) {
+        wx.requestCNode({
+            url: `/message/count?accesstoken=${token}`
+        })
+    }
 })

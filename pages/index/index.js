@@ -1,6 +1,5 @@
 import Tab from '../../bower_components/zanui-weapp/dist/tab/index'
-import timeago from '../../bower_components/timeago.js/dist/timeago'
-const timeagoInstance = timeago()
+import { formatTime } from '../../utils'
 
 Page(Object.assign({}, Tab, {
   data: {
@@ -52,7 +51,7 @@ Page(Object.assign({}, Tab, {
       // Get display tag
       topic.tag = this.getTag(topic)
       // Format time
-      topic.time = timeagoInstance.format(topic.create_at, 'zh_CN')
+      topic.time = formatTime(topic.create_at)
       return topic
     })
   },

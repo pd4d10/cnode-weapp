@@ -1,2 +1,37 @@
-<!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<view class="container">
+  <view class="user">
+    <image src="{{user.avatar_url}}" class="avatar"></image>
+    <view class="info">
+      <view class="name">{{user.loginname}}</view>
+      <view class="more">
+        <text class="time">注册时间：{{time}}</text>
+        <text class="score">{{user.score}} 积分</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="zan-panel">
+    <view class="zan-cell zan-cell--access">
+      <view class="zan-cell__bd">最近回复</view>
+      <view class="zan-cell__ft"></view>
+    </view>
+    <view class="zan-cell zan-cell--access">
+      <view class="zan-cell__bd">最近发布</view>
+      <view class="zan-cell__ft"></view>
+    </view>
+  </view>
+
+  <view class="zan-panel">
+    <view class="zan-cell zan-cell--access zan-cell--switch">
+      <view class="zan-cell__bd">新消息提示</view>
+      <switch checked bindchange="switchMessage"/>
+    </view>
+  </view>
+  <view class="zan-panel">
+    <view class="zan-cell zan-cell--access zan-cell--switch">
+      <view class="zan-cell__bd">小尾巴</view>
+      <switch checked bindchange="switchTail"/>
+    </view>
+  </view>
+
+</view>
