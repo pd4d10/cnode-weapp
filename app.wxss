@@ -8,48 +8,6 @@
   font-family: PingFang SC;
 }
 
-/*markdown*/
-
-.wxParse-ul {
-  margin: 8px 0 8px 12px;
-}
-
-.wxParse-li-circle {
-  display: none;
-}
-
-.markdown-text {
-  margin: 10px 0 6px;
-}
-
-
-/*Fix font size too large*/
-
-.wxParse-div {
-  font-size: 16px;
-}
-
-
-/*Fix code*/
-
-.wxParse-pre {
-  padding: 8px;
-  overflow: auto;
-  font-size: 85%;
-  line-height: 1.45;
-  background-color: #f7f7f7;
-  border-radius: 2px;
-  margin: 10px 0;
-}
-
-
-/*Fix scroll*/
-
-.wxParse-li-text {
-  line-height: 24px;
-}
-
-
 /*Tab*/
 
 .zan-tab__title {
