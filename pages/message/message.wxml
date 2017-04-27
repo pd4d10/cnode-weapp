@@ -11,6 +11,6 @@
     </navigator>
   </view>
   <view class="button-container" wx:if="{{!verified}}">
-    <button bindtap="login" type="primary">扫码登录</button>
+    <button bindtap="getMessage" type="primary">扫码登录</button>
   </view>
 </view>
