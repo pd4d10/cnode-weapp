@@ -36,3 +36,11 @@ page {
   display: flex;
   justify-content: space-between;
 }
+
+.exit {
+  text-align: center;
+}
+
+.exit-active {
+  background: #eee;
+}

@@ -37,4 +37,9 @@
     </view>
   </view>
 
+  <view class="zan-panel">
+    <view bindtap="exit" class="zan-cell zan-cell--access exit" hover hover-class="exit-active">
+      <view class="zan-cell__bd exit">退出登录</view>
+    </view>
+  </view>
 </view>

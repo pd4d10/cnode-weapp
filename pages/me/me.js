@@ -36,8 +36,29 @@ Page(
           wx.hideToast();
 
           // Set recent topics and replies to global data
-          app.globalData.recent_topics = json.recent_topics
-          app.globalData.recent_replies = json.recent_replies
+          app.globalData.recent_topics = json.recent_topics;
+          app.globalData.recent_replies = json.recent_replies;
+        }
+      });
+    },
+    exit() {
+      wx.showModal({
+        title: "确认退出登录？",
+        content: "退出登录后，需要重新扫码登录",
+        success: function(res) {
+          if (res.confirm) {
+            const app = getApp()
+            delete app.globalData.token
+            wx.removeStorage({
+              key: "token",
+              complete: function() {
+                wx.reLaunch({
+                  url: '/pages/index/index'
+                })
+              }
+            });
+          } else if (res.cancel) {
+          }
         }
       });
     }
