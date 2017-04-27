@@ -1,4 +1,5 @@
 @import "/bower_components/wxParse/wxParse/wxParse.wxss";
+@import '/bower_components/zanui-weapp/dist/loadmore/index.wxss';
 
 .container {
   padding: 24rpx;

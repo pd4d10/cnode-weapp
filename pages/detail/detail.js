@@ -5,6 +5,7 @@ const timeagoInstance = timeago()
 Page({
   data: {
     topic: null,
+    end: true,
   },
   onLoad(options) {
     wx.showToast({
@@ -14,16 +15,18 @@ Page({
     wx.request({
       url: `https://cnodejs.org/api/v1/topic/${options.id}`,
       success: (res) => {
+        const json = res.data.data
         this.setData({
-          topic: res.data.data,
-          create_at: timeagoInstance.format(res.data.data.create_at, 'zh_CN'),
-          reply_create_at: res.data.data.replies.map(reply => {
+          topic: json,
+          create_at: timeagoInstance.format(json.create_at, 'zh_CN'),
+          reply_create_at: json.replies.map(reply => {
             return timeagoInstance.format(reply.create_at)
           }),
-          replies: res.data.data.replies.slice(0, 10),
+          replies: json.replies.slice(0, 10),
+          end: json.replies.length <= 10,
         })
         // Render HTML
-        wxParse('content', 'html', res.data.data.content, this, 5)
+        wxParse('content', 'html', json.content, this, 5)
         this.data.replies.forEach((reply, i) => {
           wxParse(`replies_html[${i}]`, 'html', reply.content, this, 5)
         })
@@ -46,7 +49,8 @@ Page({
       replies: [
         ...this.data.replies,
         ...moreReplies
-      ]
+      ],
+      end: count + 10 >= this.data.topic.replies.length,
     })
     moreReplies.forEach((reply, i) => {
       wxParse(`replies_html[${i + count}]`, 'html', reply.content, this, 5)

@@ -1,4 +1,6 @@
 <import src="/bower_components/wxParse/wxParse/wxParse.wxml" />
+<import src="/bower_components/zanui-weapp/dist/loadmore/index.wxml" />
+
 <view wx:if="{{topic}}" class="container">
   <view class="title">{{topic.title}}</view>
   <view class="user">
@@ -20,4 +22,5 @@
     </view>
     <template is="wxParse" data="{{wxParseData:replies_html[index].nodes}}" />
   </view>
+    <template is="zan-loadmore" data="{{loading: !end, nomore: end}}" />
 </view>
