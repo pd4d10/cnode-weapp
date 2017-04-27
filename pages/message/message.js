@@ -1,10 +1,11 @@
-import { getToken } from '../../utils'
+import { getToken, onShareAppMessage } from '../../utils'
 
 Page({
   data: {
     messages: [],
     verified: false,
   },
+  onShareAppMessage,
   onReady(options) {
     this.login()
   },

@@ -28,9 +28,6 @@
       <view class="zan-cell__bd">小尾巴</view>
       <template is="zan-switch" data="{{ checked: hasTail, componentId: 'hasTail' }}" />
     </view>
-  </view>
-
-  <view class="zan-panel">
     <view class="zan-cell zan-cell--access zan-cell--switch">
       <view class="zan-cell__bd">新消息提醒</view>
       <template is="zan-switch" data="{{ checked: messagePushEnabled, componentId: 'messagePushEnabled' }}" />

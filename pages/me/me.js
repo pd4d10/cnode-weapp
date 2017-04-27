@@ -43,8 +43,8 @@ Page(
     },
     exit() {
       wx.showModal({
-        title: "确认退出登录？",
-        content: "退出登录后，需要重新扫码登录",
+        title: "是否退出？",
+        content: "退出登录后，如需再次登录请重新扫码",
         success: function(res) {
           if (res.confirm) {
             const app = getApp()

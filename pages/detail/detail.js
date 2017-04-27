@@ -54,5 +54,11 @@ Page({
     moreReplies.forEach((reply, i) => {
       wxParse(`replies_html[${i + count}]`, 'html', reply.content, this, 20)
     })
+  },
+  onShareAppMessage() {
+    return {
+      title: this.data.topic.title,
+      path: `/pages/detail/detail?id=${this.data.topic.id}`,
+    }
   }
 })

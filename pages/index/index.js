@@ -1,5 +1,5 @@
 import Tab from '../../bower_components/zanui-weapp/dist/tab/index'
-import { formatTime } from '../../utils'
+import { formatTime, onShareAppMessage } from '../../utils'
 
 Page(Object.assign({}, Tab, {
   data: {
@@ -29,6 +29,7 @@ Page(Object.assign({}, Tab, {
       scroll: false
     }
   },
+  onShareAppMessage,
   getTag(topic) {
     if (topic.top) {
       return {highlight: true, text:'置顶'}
