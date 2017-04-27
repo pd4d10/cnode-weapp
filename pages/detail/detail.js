@@ -1,15 +1,22 @@
 import { wxParse } from '../../bower_components/wxParse/wxParse/wxParse.js'
-import { formatTime } from '../../utils'
+import { formatTime, getToken } from '../../utils'
 
 Page({
   data: {
-    topic: null,
+    topic: undefined,
     end: true,
+    isDialogVisible: false,
+    replyId: undefined,
+    replyContent: '',
+    isSubmitting: false,
   },
   onLoad(options) {
     wx.showNavigationBarLoading()
+    this.fetchTopic(options.id)
+  },
+  fetchTopic(id) {
     wx.request({
-      url: `https://cnodejs.org/api/v1/topic/${options.id}`,
+      url: `https://cnodejs.org/api/v1/topic/${id}`,
       success: (res) => {
         const json = res.data.data
         wx.setNavigationBarTitle({
@@ -33,7 +40,7 @@ Page({
       },
       fail(res) {
         wx.showToast({
-          title: '错误'
+          title: '加载失败'
         })
       },
       complete(res) {
@@ -60,5 +67,56 @@ Page({
       title: this.data.topic.title,
       path: `/pages/detail/detail?id=${this.data.topic.id}`,
     }
+  },
+  showDialog(e) {
+    this.setData({
+      isDialogVisible: true,
+      replyContent: `@${e.target.dataset.name} `,
+      replyId: e.target.dataset.id,
+    })
+  },
+  hideDialog() {
+    this.setData({
+      isDialogVisible: false,
+    })
+  },
+  submit() {
+    this.setData({
+      isSubmitting: true,
+    })
+
+    getToken(token => {
+      const tail = '\n来自 [CNodeJS 小程序](https://github.com/pd4d10/cnode-weapp)'
+      const app = getApp()
+      const content = this.data.replyContent + (app.globalData.hasTail ? tail : '')
+
+      wx.requestCNode({
+        url: `/topic/${this.topic.id}/replies`,
+        method: 'POST',
+        data: {
+          accesstoken: token,
+          content: this.data.replyContent,
+          reply_id: this.data.replyId,
+        },
+        success: res => {
+        // setTimeout(() => {
+          this.setData({
+            isSubmitting: false,
+            isDialogVisible: false,
+          })
+          wx.showToast({
+            title: '回复成功',
+          })
+          if (this.data.end) {
+            setTimeout(() => {
+              wx.redirectTo({
+                url: `/pages/detail/detail?id=${this.topic.id}`,
+              })
+            }, 500)
+          }
+        // }, 2000)
+        }
+      })
+    })
   }
 })

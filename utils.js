@@ -23,7 +23,7 @@ export function getToken(cb) {
 
   // No token, request user to scan QRCode
   wx.showModal({
-    content: "在 PC 上打开 CNodeJS 论坛，点击右上角“设置”，Access Token 二维码在页面最下方",
+    content: "请先在 PC 版 CNodeJS 社区登录，Access Token 的二维码位于“设置”页面左下角",
     showCancel: false,
     confirmText: "我知道了",
     complete() {

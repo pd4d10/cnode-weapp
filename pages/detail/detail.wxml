@@ -19,8 +19,17 @@
         <view class="reply-name">{{item.author.loginname}}</view>
         <view class="reply-time">{{reply_create_at[index]}}</view>
       </view>
+      <view class="reply-add" data-id="{{item.id}}" data-name="{{item.author.loginname}}" bindtap="showDialog" hover hover-class="reply-add-active">回复</view>
     </view>
     <template is="wxParse" data="{{wxParseData:replies_html[index].nodes}}" />
   </view>
-    <template is="zan-loadmore" data="{{loading: !end, nomore: end}}" />
+  <template is="zan-loadmore" data="{{loading: !end, nomore: end}}" />
+
+  <view class="zan-dialog {{ isDialogVisible ? 'zan-dialog--show' : '' }}">
+    <view class="zan-dialog__mask" bindtap="hideDialog" />
+    <view class="zan-dialog__container reply-dialog">
+      <textarea focus="{{isDialogVisible}}" fixed value="{{replyContent}}" />
+      <button bindtap="submit" type="primary" loading="{{isSubmitting}}">回复</button>
+    </view>
+  </view>
 </view>
