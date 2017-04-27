@@ -1,8 +1,8 @@
-@import "/bower_components/wxParse/wxParse/wxParse.wxss";
 @import '/bower_components/zanui-weapp/dist/loadmore/index.wxss';
 @import '/bower_components/zanui-weapp/dist/tab/index.wxss';
 @import '/bower_components/zanui-weapp/dist/cell/index.wxss';
 @import '/bower_components/zanui-weapp/dist/panel/index.wxss';
+@import '/bower_components/zanui-weapp/dist/switch/index.wxss';
 
 .container {
   font-family: PingFang SC;
@@ -22,11 +22,13 @@
   margin: 10px 0 6px;
 }
 
+
 /*Fix font size too large*/
 
 .wxParse-div {
   font-size: 16px;
 }
+
 
 /*Fix code*/
 
@@ -40,13 +42,16 @@
   margin: 10px 0;
 }
 
+
 /*Fix scroll*/
 
 .wxParse-li-text {
   line-height: 24px;
 }
 
+
 /*Tab*/
+
 .zan-tab__title {
   font-weight: 400;
 }
@@ -55,6 +60,7 @@
   color: #80bd01;
   border-bottom: 2px solid #80bd01;
 }
+
 
 /*.zan-cell {
   padding: 13px 15px;

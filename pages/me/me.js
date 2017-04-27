@@ -1,24 +1,41 @@
-import { formatTime } from '../../utils'
+import Switch from "../../bower_components/zanui-weapp/dist/switch/index";
+import { formatTime } from "../../utils";
 
-Page({
-  data: {},
-  onLoad(options) {
-    const app = getApp()
-    const { loginname } = app.globalData
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-    })
-    wx.requestCNode({
-      url: `/user/${loginname}`,
-      success: (res) => {
-        const json = res.data.data
-        this.setData({
-          user: json,
-          time: formatTime(json.create_at)
-        })
-        wx.hideToast()
-      }
-    })
-  }
-})
+Page(
+  Object.assign({}, Switch, {
+    data: {},
+    handleZanSwitchChange(e) {
+      // For switch
+      this.setData({
+        [e.componentId]: e.checked
+      });
+      getApp().globalData[e.componentId] = e.checked;
+      wx.setStorage({
+        key: e.componentId,
+        data: e.checked
+      });
+    },
+    onLoad(options) {
+      const app = getApp();
+      const { hasTail, messagePushEnabled } = app.globalData;
+      this.setData({ hasTail, messagePushEnabled });
+
+      const { loginname } = app.globalData;
+      wx.showToast({
+        title: "加载中",
+        icon: "loading"
+      });
+      wx.requestCNode({
+        url: `/user/${loginname}`,
+        success: res => {
+          const json = res.data.data;
+          this.setData({
+            user: json,
+            time: formatTime(json.create_at)
+          });
+          wx.hideToast();
+        }
+      });
+    }
+  })
+);

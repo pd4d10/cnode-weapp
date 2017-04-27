@@ -1,3 +1,5 @@
+<import src="/bower_components/zanui-weapp/dist/switch/index.wxml" />
+
 <view class="container">
   <view class="user">
     <image src="{{user.avatar_url}}" class="avatar"></image>
@@ -23,30 +25,15 @@
 
   <view class="zan-panel">
     <view class="zan-cell zan-cell--access zan-cell--switch">
-      <view class="zan-cell__bd">新消息提示</view>
-      <switch checked bindchange="switchMessage"/>
+      <view class="zan-cell__bd">小尾巴</view>
+      <template is="zan-switch" data="{{ checked: hasTail, componentId: 'hasTail' }}" />
     </view>
   </view>
+
   <view class="zan-panel">
     <view class="zan-cell zan-cell--access zan-cell--switch">
-      <view class="zan-cell__bd">小尾巴</view>
-      <switch checked bindchange="switchTail"/>
-    </view>
-  </view>
-
-
-  <view class="zan-panel">
-    <view class="zan-cell zan-cell--access">
-      <view class="zan-cell__bd">多行列表</view>
-      <view class="zan-cell__ft"></view>
-    </view>
-    <view class="zan-cell zan-cell--access">
-      <view class="zan-cell__bd">多行列表</view>
-      <view class="zan-cell__ft"></view>
-    </view>
-    <view class="zan-cell zan-cell--access">
-      <view class="zan-cell__bd">多行列表</view>
-      <view class="zan-cell__ft"></view>
+      <view class="zan-cell__bd">新消息提醒</view>
+      <template is="zan-switch" data="{{ checked: messagePushEnabled, componentId: 'messagePushEnabled' }}" />
     </view>
   </view>
 
