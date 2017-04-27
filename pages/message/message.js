@@ -1,22 +1,24 @@
-import { getToken, onShareAppMessage } from '../../utils'
+import { getToken } from '../../utils'
 
 Page({
   data: {
     messages: [],
     verified: false,
   },
-  onShareAppMessage,
   onReady(options) {
     this.login()
   },
   login() {
     getToken((token) => {
+      this.setData({
+        verified: true,
+      })
+
       wx.requestCNode({
         url: `/messages?accesstoken=${token}`,
         success: (res) => {
           const { data } = res.data
           this.setData({
-            verified: true,
             messages: [
               ...data.hasnot_read_messages,
               ...data.has_read_messages,
@@ -31,13 +33,4 @@ Page({
       })
     })
   },
-  onShow: function () {
-    // 页面显示
-  },
-  onHide: function () {
-    // 页面隐藏
-  },
-  onUnload: function () {
-    // 页面关闭
-  }
 })

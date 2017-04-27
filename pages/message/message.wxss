@@ -6,6 +6,11 @@
   width: 100%;
 }
 
+.button-container button {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
 .container {
   color: #333;
   font-size: 16px;
@@ -13,18 +18,32 @@
 
 .link {
   border-bottom: 1px solid #eee;
-  padding: 16px;
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 300;
+  color: #aaa;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 10px;
+  float: left;
 }
 
 .author {
-  color: #08c;
+  color: #80bd01;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 .title {
-  font-size: 16px;
-  color: #08c;
+  font-weight: 400;
+  font-size: 14px;
+  color: #444;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin-top: 16px;
+  margin-top: 4px;
 }

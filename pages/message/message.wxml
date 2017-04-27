@@ -1,11 +1,16 @@
-<view class="container" wx:if="{{verified}}">
-  <navigator class="link" url="/pages/detail/detail?id={{item.topic.id}}" wx:for="{{messages}}" wx:key="id">
-    <text class="author">{{item.author.loginname}} </text>
-    <text wx:if="{{item.type === 'reply'}}">回复了你的话题：</text>
-    <text wx:if="{{item.type === 'at'}}">在话题中@了你：</text>
-    <view class="title">{{item.topic.title}}</view>
-  </navigator>
-</view>
-<view class="button-container" wx:if="{{!verified}}">
-  <button bindtap="login" type="primary">扫码登录</button>
+<view>
+  <view class="container" wx:if="{{verified}}">
+    <navigator class="link" url="/pages/detail/detail?id={{item.topic.id}}" wx:for="{{messages}}" wx:key="id">
+      <image src="{{item.author.avatar_url}}" class="avatar" />
+      <view class="">
+        <text class="author">{{item.author.loginname}} </text>
+        <text wx:if="{{item.type === 'reply'}}">回复了你的话题：</text>
+        <text wx:if="{{item.type === 'at'}}">在话题中@了你：</text>
+        <view class="title">{{item.topic.title}}</view>
+      </view>
+    </navigator>
+  </view>
+  <view class="button-container" wx:if="{{!verified}}">
+    <button bindtap="login" type="primary">扫码登录</button>
+  </view>
 </view>
