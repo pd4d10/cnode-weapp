@@ -11,7 +11,7 @@
 /*markdown*/
 
 .wxParse-ul {
-  margin: 10rpx 0 10rpx 20rpx;
+  margin: 8px 0 8px 12px;
 }
 
 .wxParse-li-circle {
@@ -19,29 +19,47 @@
 }
 
 .markdown-text {
-  margin: 20rpx 0 12rpx;
+  margin: 10px 0 6px;
 }
 
 /*Fix font size too large*/
 
 .wxParse-div {
-  font-size: 32rpx;
+  font-size: 16px;
 }
 
 /*Fix code*/
 
 .wxParse-pre {
-  padding: 16rpx;
+  padding: 8px;
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
   background-color: #f7f7f7;
-  border-radius: 6rpx;
-  margin: 20rpx 0;
+  border-radius: 2px;
+  margin: 10px 0;
 }
 
 /*Fix scroll*/
 
 .wxParse-li-text {
-  line-height: 48rpx;
+  line-height: 24px;
 }
+
+/*Tab*/
+.zan-tab__title {
+  font-weight: 400;
+}
+
+.zan-tab__item--selected .zan-tab__title {
+  color: #80bd01;
+  border-bottom: 2px solid #80bd01;
+}
+
+/*.zan-cell {
+  padding: 13px 15px;
+}
+.zan-cell--switch {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}*/

@@ -2,33 +2,34 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  font-weight: 300;
 }
 
 .link {
-  padding: 24rpx;
+  padding: 12px;
   box-sizing: border-box;
-  border-bottom: 2rpx solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
 .avatar {
-  width: 96rpx;
-  height: 96rpx;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  margin-right: 20rpx;
+  margin-right: 10px;
   float: left;
 }
 
 .content {
-  height: 96rpx;
+  height: 48px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .title {
-  /*width: 500rpx;*/
-  font-size: 32rpx;
-  line-height: 48rpx;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
   color: #333;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -38,16 +39,16 @@
 .sub-content {
   display: flex;
   align-items: center;
-  font-size: 24rpx;
+  font-size: 12px;
 }
 
 .tag {
   background-color: #e5e5e5;
   color: #999;
-  padding: 0 8rpx;
-  border-radius: 4rpx;
-  line-height: 40rpx;
-  margin-right: 16rpx;
+  padding: 0 4px;
+  border-radius: 2px;
+  line-height: 20px;
+  margin-right: 8px;
 }
 
 .tag-highlight {

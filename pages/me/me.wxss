@@ -3,36 +3,36 @@ page {
 }
 
 .user {
-  padding: 24rpx;
+  padding: 12px;
   background: #fff;
-  border-bottom: 1rpx solid #eee;
-  margin-bottom: 40rpx;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
 }
 
 .avatar {
   float: left;
-  width: 96rpx;
-  height: 96rpx;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  margin-right: 20rpx;
+  margin-right: 10px;
 }
 
 .info {
-  font-size: 32rpx;
-  height: 96rpx;
+  font-size: 16px;
+  height: 48px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .name {
-  line-height: 48rpx;
+  line-height: 24px;
 }
 
 .more {
-  line-height: 48rpx;
+  line-height: 24px;
   color: #555;
-  font-size: 24rpx;
+  font-size: 12px;
   display: flex;
   justify-content: space-between;
 }
