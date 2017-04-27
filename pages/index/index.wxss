@@ -45,12 +45,17 @@
 }
 
 .tag {
-  background: #80bd01;
+  background-color: #e5e5e5;
+  color: #999;
   padding: 0 8rpx;
   border-radius: 4rpx;
-  color: #fff;
   line-height: 40rpx;
   margin-right: 16rpx;
+}
+
+.tag-highlight {
+  background: #80bd01;
+  color: #fff;
 }
 
 .sub-sub-content {

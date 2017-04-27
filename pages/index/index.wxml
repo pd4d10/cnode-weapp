@@ -11,7 +11,8 @@
       <view class="content">
         <text class="title">{{item.title}}</text>
         <view class="sub-content">
-          <text class="tag">置顶</text>
+          <text class="tag" wx:if="{{!item.tag.highlight}}">{{item.tag.text}}</text>
+          <text class="tag tag-highlight" wx:if="{{item.tag.highlight}}">{{item.tag.text}}</text>
           <view class="sub-sub-content">
             <text class="reply">{{item.reply_count}}</text>
             回复 /

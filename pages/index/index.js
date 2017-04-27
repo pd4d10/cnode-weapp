@@ -30,8 +30,28 @@ Page(Object.assign({}, Tab, {
       scroll: false
     }
   },
+  getTag(topic) {
+    if (topic.top) {
+      return {highlight: true, text:'置顶'}
+    }
+    if (topic.good) {
+      return {highlight: true, text:'精华'}
+    }
+    const tagMap = {
+      share: '分享',
+      ask: '问答',
+      job: '招聘',
+    }
+    return {
+      highlight: false,
+      text: tagMap[topic.tab],
+    }
+  },
   format(topics) {
     return topics.map(topic => {
+      // Get display tag
+      topic.tag = this.getTag(topic)
+      // Format time
       topic.time = timeagoInstance.format(topic.create_at, 'zh_CN')
       return topic
     })
