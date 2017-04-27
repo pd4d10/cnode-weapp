@@ -1,0 +1,19 @@
+<template name="topic">
+  <navigator url="/pages/detail/detail?id={{topic.id}}" class="link">
+    <image class="avatar" src="{{topic.author.avatar_url}}" mode="scaleToFill" />
+    <view class="content">
+      <text class="title">{{topic.title}}</text>
+      <view class="sub-content">
+        <text class="tag" wx:if="{{!topic.tag.highlight}}">{{topic.tag.text}}</text>
+        <text class="tag tag-highlight" wx:if="{{topic.tag.highlight}}">{{topic.tag.text}}</text>
+        <view class="sub-sub-content">
+          <text class="reply">{{topic.reply_count}}</text>
+          回复 /
+          <text class="visit">{{topic.visit_count}}</text>
+          浏览
+        </view>
+        <text class="time">{{topic.time}}</text>
+      </view>
+    </view>
+  </navigator>
+</template>
