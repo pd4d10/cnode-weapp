@@ -34,6 +34,10 @@ Page(
             time: formatTime(json.create_at)
           });
           wx.hideToast();
+
+          // Set recent topics and replies to global data
+          app.globalData.recent_topics = json.recent_topics
+          app.globalData.recent_replies = json.recent_replies
         }
       });
     }

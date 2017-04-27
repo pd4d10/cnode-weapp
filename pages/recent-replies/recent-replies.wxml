@@ -1,0 +1,7 @@
+<import src="/templates/topic.wxml" />
+
+<view class="container">
+  <view wx:for="{{topics}}" wx:key="id">
+    <template is="topic" data="{{topic: item}}" />
+  </view>
+</view>

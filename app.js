@@ -73,10 +73,7 @@ App({
 
             // Valid token, save user info
             this.globalData.token = accesstoken;
-            this.globalData.loginname = res.data.loginname;
-            this.globalData.avatar_url = res.data.avatar_url;
-
-            this.fetchMessage();
+            this.globalData.loginname = res.data.loginname
           }
         });
       },

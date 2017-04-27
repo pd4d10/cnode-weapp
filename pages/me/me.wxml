@@ -13,14 +13,14 @@
   </view>
 
   <view class="zan-panel">
-    <view class="zan-cell zan-cell--access">
-      <view class="zan-cell__bd">最近回复</view>
+    <navigator url="/pages/recent-replies/recent-replies" class="zan-cell zan-cell--access">
+      <view class="zan-cell__bd">最近参与的话题</view>
       <view class="zan-cell__ft"></view>
-    </view>
-    <view class="zan-cell zan-cell--access">
-      <view class="zan-cell__bd">最近发布</view>
+    </navigator>
+    <navigator url="/pages/recent-topics/recent-topics" class="zan-cell zan-cell--access">
+      <view class="zan-cell__bd">最近创建的话题</view>
       <view class="zan-cell__ft"></view>
-    </view>
+    </navigator>
   </view>
 
   <view class="zan-panel">
