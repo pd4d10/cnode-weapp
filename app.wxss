@@ -11,8 +11,8 @@
 }
 
 .zan-tab__item--selected .zan-tab__title {
-  color: #6ba44e;
-  border-bottom: 2px solid #6ba44e;
+  color: #80bd01;
+  border-bottom: 2px solid #80bd01;
 }
 
 
