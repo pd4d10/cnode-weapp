@@ -1,4 +1,4 @@
-import { getToken, request } from "../../utils";
+import { getToken, request, showUpdateSuccessToast } from "../../utils";
 
 Page({
   data: {
@@ -25,15 +25,8 @@ Page({
             messages: [...data.hasnot_read_messages, ...data.has_read_messages]
           });
           if (isRefresh) {
-            wx.showToast({
-              title: '更新成功'
-            })
+            showUpdateSuccessToast()
           }
-        },
-        fail(err) {
-          wx.showToast({
-            title: "获取消息失败"
-          });
         },
         complete() {
           wx.stopPullDownRefresh()

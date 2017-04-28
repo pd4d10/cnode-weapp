@@ -4,18 +4,69 @@ const URL_PREFIX = "https://cnodejs.org/api/v1";
 
 // Simple wrapper for request
 export function request(options) {
-  options.url = `${URL_PREFIX}${options.url}`;
-  return wx.request(options);
+  wx.request(
+    Object.assign({}, options, {
+      // Add prefix to URL
+      url: `${URL_PREFIX}${options.url}`,
+      success(res) {
+        const json = res.data;
+        // If return success: false, show error message and exit
+        if (!json.success) {
+          showErrorToast(json.error_msg);
+          // Add extra handler
+          if (options.errorExtraHandle) {
+            options.errorExtraHandle(res);
+          }
+          return;
+        }
+        options.success(res);
+      },
+      fail(res) {
+        showErrorToast(res.errMsg)
+      }
+    })
+  );
 }
 
 export function formatTime(time) {
   return timeagoInstance.format(time, "zh_CN");
 }
 
+// Toasts
+export function showLoadingToast(title = "加载中") {
+  wx.showToast({
+    title,
+    icon: "loading",
+    mask: true
+  });
+}
+
+export function showSuccessToast(title = "加载成功") {
+  wx.showToast({ title });
+}
+
+export function showUpdateSuccessToast(title = "已更新") {
+  wx.showToast({ title });
+}
+
+function showErrorToast(title = "操作失败") {
+  wx.showToast({
+    title,
+    image: "/icons/error.svg"
+  });
+}
+
+export function showMessageToast(title = "有新消息") {
+  wx.showToast({
+    title,
+    image: "/icons/new-message.svg"
+  });
+}
+
 export function onShareAppMessage() {
   return {
     title: "CNodeJS社区",
-    path: `/pages/index/index`,
+    path: `/pages/index/index`
   };
 }
 
@@ -45,17 +96,6 @@ export function getToken(cb) {
             method: "POST",
             data: { accesstoken },
             success(res) {
-              // Invalid token
-              if (!res.data.success) {
-                wx.showToast({
-                  title: "token 不正确"
-                });
-                wx.removeStorage({
-                  key: "token"
-                });
-                return;
-              }
-
               // Valid token, save user info
               app.globalData.token = accesstoken;
               app.globalData.loginname = res.data.loginname;
@@ -66,23 +106,16 @@ export function getToken(cb) {
                 data: accesstoken
               });
             },
-            fail(res) {
-              wx.showToast({
-                title: res.errMsg
+            errorExtraHandle(res) {
+              // Invalid token
+              wx.removeStorage({
+                key: "token"
               });
-            },
-            complete(res) {
-              // complete
             }
           });
         },
         fail(res) {
-          wx.showToast({
-            title: "扫码失败"
-          });
-        },
-        complete(res) {
-          // console.log(res)
+          showErrorToast("扫码失败");
         }
       });
     }

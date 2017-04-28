@@ -1,4 +1,4 @@
-import { request } from './utils'
+import { request, showMessageToast } from "./utils";
 
 // Storage keys
 // token - access token
@@ -57,17 +57,15 @@ App({
           method: "POST",
           data: { accesstoken },
           success: res => {
-            if (!res.data.success) {
-              // Invalid token, delete it from storage
-              wx.removeStorage({
-                key: "token"
-              });
-              return;
-            }
-
             // Valid token, save user info
             this.globalData.token = accesstoken;
-            this.globalData.loginname = res.data.loginname
+            this.globalData.loginname = res.data.loginname;
+          },
+          errorExtraHandle(res) {
+            // Invalid token
+            wx.removeStorage({
+              key: "token"
+            });
           }
         });
       },
@@ -88,9 +86,7 @@ App({
       url: `/message/count?accesstoken=${token}`,
       success: res => {
         if (res.data.data > 0) {
-          wx.showToast({
-            title: "有新消息"
-          });
+          showMessageToast();
         }
         cb();
       }

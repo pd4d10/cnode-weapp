@@ -27,10 +27,6 @@ Page(
         this.setData({ hasTail, messagePushEnabled, verified: true });
 
         const { loginname } = app.globalData;
-        wx.showToast({
-          title: "加载中",
-          icon: "loading"
-        });
         request({
           url: `/user/${loginname}`,
           success: res => {
@@ -39,7 +35,6 @@ Page(
               user: json,
               time: formatTime(json.create_at)
             });
-            wx.hideToast();
 
             // Set recent topics and replies to global data
             app.globalData.recent_topics = json.recent_topics;
