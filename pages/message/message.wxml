@@ -1,8 +1,8 @@
 <view>
   <view class="container" wx:if="{{verified}}">
-    <navigator class="link" url="/pages/detail/detail?id={{item.topic.id}}" wx:for="{{messages}}" wx:key="id">
+    <navigator class="link {{item.has_read ? '' : 'link-unread'}}" url="/pages/detail/detail?id={{item.topic.id}}" wx:for="{{messages}}" wx:key="id">
       <image src="{{item.author.avatar_url}}" class="avatar" />
-      <view class="">
+      <view class="content">
         <text class="author">{{item.author.loginname}} </text>
         <text wx:if="{{item.type === 'reply'}}">回复了你的话题：</text>
         <text wx:if="{{item.type === 'at'}}">在话题中@了你：</text>

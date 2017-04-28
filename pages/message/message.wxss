@@ -24,12 +24,20 @@
   color: #aaa;
 }
 
+.link-unread {
+  background: #f4fcf0;
+}
+
 .avatar {
   width: 48px;
   height: 48px;
   border-radius: 50%;
   margin-right: 10px;
   float: left;
+}
+
+.content {
+  height: 48px;
 }
 
 .author {

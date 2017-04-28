@@ -27,6 +27,15 @@ Page({
           if (isRefresh) {
             showUpdateSuccessToast()
           }
+
+          // Mask all messages as read
+          request({
+            url: '/message/mark_all',
+            method: 'POST',
+            data: {
+              accesstoken: token,
+            },
+          })
         },
         complete() {
           wx.stopPullDownRefresh()
