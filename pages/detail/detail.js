@@ -75,13 +75,19 @@ Page({
   showDialog(e) {
     this.setData({
       isDialogVisible: true,
-      replyContent: `@${e.currentTarget.dataset.name} `,
+      // replyContent: `@${e.currentTarget.dataset.name} `,
       replyId: e.currentTarget.dataset.id,
+      replyName: e.currentTarget.dataset.name,
     })
   },
   hideDialog() {
     this.setData({
       isDialogVisible: false,
+    })
+  },
+  changeInput(e) {
+    this.setData({
+      replyContent: e.detail.value
     })
   },
   submit() {
@@ -90,16 +96,17 @@ Page({
     })
 
     getToken(token => {
-      const tail = '\n来自 [CNodeJS 小程序](https://github.com/pd4d10/cnode-weapp)'
+      const tail = '\n\n来自 [CNode weapp](https://github.com/pd4d10/cnode-weapp)'
       const app = getApp()
-      const content = this.data.replyContent + (app.globalData.hasTail ? tail : '')
+      const content = `@${this.data.replyName} ${this.data.replyContent} ${app.globalData.hasTail ? tail : ''}`
+      console.log(content)
 
       wx.requestCNode({
-        url: `/topic/${this.topic.id}/replies`,
+        url: `/topic/${this.data.topic.id}/replies`,
         method: 'POST',
         data: {
           accesstoken: token,
-          content: this.data.replyContent,
+          content,
           reply_id: this.data.replyId,
         },
         success: res => {
@@ -114,7 +121,7 @@ Page({
           if (this.data.end) {
             setTimeout(() => {
               wx.redirectTo({
-                url: `/pages/detail/detail?id=${this.topic.id}`,
+                url: `/pages/detail/detail?id=${this.data.topic.id}`,
               })
             }, 500)
           }

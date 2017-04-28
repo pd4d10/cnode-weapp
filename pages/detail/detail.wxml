@@ -38,7 +38,7 @@
   <view class="zan-dialog {{ isDialogVisible ? 'zan-dialog--show' : '' }}">
     <view class="zan-dialog__mask" bindtap="hideDialog" />
     <view class="zan-dialog__container reply-dialog">
-      <textarea focus="{{isDialogVisible}}" fixed value="{{replyContent}}" />
+      <textarea focus="{{isDialogVisible}}" fixed bindinput="changeInput" />
       <button bindtap="submit" type="primary" loading="{{isSubmitting}}">回复</button>
     </view>
   </view>
