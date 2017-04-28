@@ -1,9 +1,11 @@
 import Switch from "../../bower_components/zanui-weapp/dist/switch/index";
-import { formatTime } from "../../utils";
+import { formatTime, getToken } from "../../utils";
 
 Page(
   Object.assign({}, Switch, {
-    data: {},
+    data: {
+      verified: false,
+    },
     handleZanSwitchChange(e) {
       // For switch
       this.setData({
@@ -15,31 +17,37 @@ Page(
         data: e.checked
       });
     },
-    onLoad(options) {
+    onReady() {
+      this.getData();
+    },
+    getData() {
+      getToken(() => {
+        const app = getApp()
+        const { hasTail, messagePushEnabled } = app.globalData;
+        this.setData({ hasTail, messagePushEnabled, verified: true });
+
+        const { loginname } = app.globalData;
+        wx.showToast({
+          title: "加载中",
+          icon: "loading"
+        });
+        wx.requestCNode({
+          url: `/user/${loginname}`,
+          success: res => {
+            const json = res.data.data;
+            this.setData({
+              user: json,
+              time: formatTime(json.create_at)
+            });
+            wx.hideToast();
+
+            // Set recent topics and replies to global data
+            app.globalData.recent_topics = json.recent_topics;
+            app.globalData.recent_replies = json.recent_replies;
+          }
+        });
+      });
       const app = getApp();
-      const { hasTail, messagePushEnabled } = app.globalData;
-      this.setData({ hasTail, messagePushEnabled });
-
-      const { loginname } = app.globalData;
-      wx.showToast({
-        title: "加载中",
-        icon: "loading"
-      });
-      wx.requestCNode({
-        url: `/user/${loginname}`,
-        success: res => {
-          const json = res.data.data;
-          this.setData({
-            user: json,
-            time: formatTime(json.create_at)
-          });
-          wx.hideToast();
-
-          // Set recent topics and replies to global data
-          app.globalData.recent_topics = json.recent_topics;
-          app.globalData.recent_replies = json.recent_replies;
-        }
-      });
     },
     exit() {
       wx.showModal({
@@ -47,14 +55,14 @@ Page(
         content: "退出登录后，如需再次登录请重新扫码",
         success: function(res) {
           if (res.confirm) {
-            const app = getApp()
-            delete app.globalData.token
+            const app = getApp();
+            delete app.globalData.token;
             wx.removeStorage({
               key: "token",
               complete: function() {
                 wx.reLaunch({
-                  url: '/pages/index/index'
-                })
+                  url: "/pages/index/index"
+                });
               }
             });
           } else if (res.cancel) {

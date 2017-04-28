@@ -1,6 +1,6 @@
 <import src="/bower_components/zanui-weapp/dist/switch/index.wxml" />
 
-<view class="container">
+<view class="container" wx:if="{{user}}">
   <view class="user">
     <image src="{{user.avatar_url}}" class="avatar"></image>
     <view class="info">
@@ -50,4 +50,8 @@
       <view class="zan-cell__bd exit">退出登录</view>
     </view>
   </view>
+</view>
+
+<view class="button-container" wx:if="{{!verified}}">
+  <button bindtap="getData" type="primary">扫码登录</button>
 </view>

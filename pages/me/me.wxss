@@ -1,3 +1,16 @@
+.button-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+}
+
+.button-container button {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
 page {
   background: #f9f9f9;
 }
@@ -11,22 +24,21 @@ page {
 
 .avatar {
   float: left;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   margin-right: 10px;
 }
 
 .info {
-  font-size: 16px;
-  height: 48px;
+  font-size: 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .name {
-  line-height: 24px;
+  line-height: 32px;
 }
 
 .more {
