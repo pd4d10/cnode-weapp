@@ -41,22 +41,34 @@
   color: #555;
 }
 
-.star {
+.operate-0 {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 6px 8px;
+  display: flex;
+}
+
+.operate-0 > view {
+  padding: 4px;
+}
+
+.star {
+  /*padding: 6px 8px;
   line-height: 1;
   color: #fff;
   font-size: 12px;
   border-radius: 4px;
   background-color: #80bd01;
-  letter-spacing: 1px;
+  letter-spacing: 1px;*/
 }
 
-.star-active {
-  background-color: #6ba44e;
+.operate-0 image {
+  width: 20px;
+  height: 20px;
 }
+/*.star-active {
+  background-color: #6ba44e;
+}*/
 
 .reply {
   padding: 8px 0;

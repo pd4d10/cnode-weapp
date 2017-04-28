@@ -96,10 +96,10 @@ Page({
     })
 
     getToken(token => {
-      const tail = '\n\n来自 [CNode weapp](https://github.com/pd4d10/cnode-weapp)'
       const app = getApp()
-      const content = `@${this.data.replyName} ${this.data.replyContent} ${app.globalData.hasTail ? tail : ''}`
-      console.log(content)
+      const tail = app.globalData.hasTail ? '\n\n来自 [CNode weapp](https://github.com/pd4d10/cnode-weapp)' : ''
+      const replyName = this.data.replyName ? `@${this.data.replyName} ` : ''
+      const content = `${replyName}${this.data.replyContent}${tail}`
 
       wx.requestCNode({
         url: `/topic/${this.data.topic.id}/replies`,
@@ -186,6 +186,9 @@ Page({
           }
           this.setData({
             'topic.is_collect': !is_collect
+          })
+          wx.showToast({
+            title: is_collect ? '已取消收藏' : '已收藏'
           })
         }
       })

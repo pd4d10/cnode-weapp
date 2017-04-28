@@ -9,7 +9,15 @@
       <text class="name">{{topic.author.loginname}}</text>
       <text class="create-at">创建于{{create_at}} {{topic.visit_count}} 次浏览</text>
     </view>
-    <view class="star" data-id="{{topic.id}}" bindtap="star" hover hover-class="star-active">{{topic.is_collect ? '取消' : ''}}收藏</view>
+    <view class="operate-0">
+      <view class="star" data-id="{{topic.id}}" bindtap="star">
+        <image wx:if="{{!topic.is_collect}}" src="/icons/star.svg" />
+        <image wx:if="{{topic.is_collect}}" src="/icons/star-active.svg" />
+      </view>
+      <view class="reply-add" bindtap="showDialog">
+        <image src="/icons/reply.svg" />
+      </view>
+    </view>
   </view>
   <template is="wxParse" data="{{wxParseData:content.nodes}}" />
   <view class="reply-title">共 {{topic.reply_count}} 条回复</view>
