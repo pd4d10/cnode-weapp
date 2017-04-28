@@ -6,7 +6,8 @@
         "pages/me/me",
         "pages/recent-topics/recent-topics",
         "pages/recent-replies/recent-replies",
-        "pages/source/source"
+        "pages/source/source",
+        "pages/star/star"
     ],
     "window": {
         "backgroundTextStyle": "dark",

@@ -21,6 +21,10 @@
       <view class="zan-cell__bd">最近创建的话题</view>
       <view class="zan-cell__ft"></view>
     </navigator>
+    <navigator url="/pages/star/star" class="zan-cell zan-cell--access">
+      <view class="zan-cell__bd">收藏的话题</view>
+      <view class="zan-cell__ft"></view>
+    </navigator>
   </view>
 
   <view class="zan-panel">

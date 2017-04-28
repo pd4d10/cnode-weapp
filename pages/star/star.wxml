@@ -1,0 +1,11 @@
+<import src="/bower_components/zanui-weapp/dist/loadmore/index.wxml" />
+<import src="/templates/topic.wxml" />
+
+<view class="container">
+  <view wx:if="{{topics.length}}">
+    <view wx:for="{{topics}}" wx:key="id">
+      <template is="topic" data="{{topic: item}}" />
+    </view>
+  </view>
+  <template is="zan-loadmore" data="{{nodata: true}}" wx:if="{{!topics.length}}" />
+</view>
