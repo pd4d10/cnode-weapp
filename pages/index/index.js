@@ -52,7 +52,7 @@ Page(Object.assign({}, Tab, {
       // Get display tag
       topic.tag = this.getTag(topic)
       // Format time
-      topic.time = formatTime(topic.create_at)
+      topic.time = formatTime(topic.last_reply_at)
       return topic
     })
   },

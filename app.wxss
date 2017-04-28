@@ -1,7 +1,7 @@
 @import '/bower_components/zanui-weapp/dist/index.wxss';
 
 .container {
-  font-family: PingFang SC;
+  /*font-family: PingFang SC;*/
 }
 
 /*Tab*/
@@ -11,8 +11,8 @@
 }
 
 .zan-tab__item--selected .zan-tab__title {
-  color: #80bd01;
-  border-bottom: 2px solid #80bd01;
+  color: #6ba44e;
+  border-bottom: 2px solid #6ba44e;
 }
 
 
