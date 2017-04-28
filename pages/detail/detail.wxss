@@ -126,9 +126,15 @@
 .reply-dialog {
   left: 0;
   padding: 12px;
-  height: 220px;
   width: 100%;
   box-sizing: border-box;
+}
+
+.zan-dialog__container {
+  transition: all 0s;
+  top: 0;
+  bottom: unset;
+  transform:translateY(-150%);
 }
 
 .reply-dialog textarea {
