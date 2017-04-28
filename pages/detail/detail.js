@@ -25,24 +25,24 @@ Page({
     const { token } = app.globalData;
     const query = token ? `?accesstoken=${token}` : "";
 
-    wx.request({
-      url: `https://cnodejs.org/api/v1/topic/${id}${query}`,
-      success: res => {
-        const json = res.data.data;
+    request({
+      url: `/topic/${id}${query}`,
+      success: json => {
+        const { data } = json;
         wx.setNavigationBarTitle({
-          title: json.title
+          title: data.title
         });
         this.setData({
-          topic: json,
-          create_at: formatTime(json.create_at),
-          reply_create_at: json.replies.map(reply => {
+          topic: data,
+          create_at: formatTime(data.create_at),
+          reply_create_at: data.replies.map(reply => {
             return formatTime(reply.create_at);
           }),
-          replies: json.replies.slice(0, 10),
-          end: json.replies.length <= 10
+          replies: data.replies.slice(0, 10),
+          end: data.replies.length <= 10
         });
         // Render HTML
-        wxParse("content", "html", json.content, this, 20);
+        wxParse("content", "html", data.content, this, 20);
         this.data.replies.forEach((reply, i) => {
           wxParse(`replies_html[${i}]`, "html", reply.content, this, 20);
         });
@@ -132,7 +132,7 @@ Page({
         data: {
           accesstoken: token
         },
-        success: res => {
+        success: json => {
           const isUp = json.action === "up";
           const ups = this.data.replies[index].ups.slice();
           // Can't get reply id
@@ -161,7 +161,7 @@ Page({
           accesstoken: token,
           topic_id: id
         },
-        success: res => {
+        success: () => {
           this.setData({
             "topic.is_collect": !is_collect
           });

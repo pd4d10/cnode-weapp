@@ -82,11 +82,11 @@ Page(
       });
       showLoadingToast();
       this.requestTopics({
-        success: res => {
+        success: json => {
           this.setData({
             isLoading: false,
             page: 1,
-            topics: this.format(res.data.data)
+            topics: this.format(json.data)
           });
           wx.hideToast();
         }
@@ -108,11 +108,11 @@ Page(
       });
       this.requestTopics({
         page: 1,
-        success: res => {
+        success: json => {
           showUpdateSuccessToast()
           this.setData({
             isLoading: false,
-            topics: this.format(res.data.data)
+            topics: this.format(json.data)
           });
         },
         complete() {
@@ -126,10 +126,10 @@ Page(
       });
 
       this.requestTopics({
-        success: res => {
+        success: json => {
           this.setData({
             isLoading: false,
-            topics: this.format(res.data.data)
+            topics: this.format(json.data)
           });
         }
       });
@@ -145,11 +145,11 @@ Page(
 
       this.requestTopics({
         page: this.data.page + 1,
-        success: res => {
+        success: json => {
           this.setData({
             isLoading: false,
             page: this.data.page + 1,
-            topics: [...this.data.topics, ...this.format(res.data.data)]
+            topics: [...this.data.topics, ...this.format(json.data)]
           });
         }
       });

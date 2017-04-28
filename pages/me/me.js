@@ -29,16 +29,16 @@ Page(
         const { loginname } = app.globalData;
         request({
           url: `/user/${loginname}`,
-          success: res => {
-            const json = res.data.data;
+          success: json => {
+            const { data } = json
             this.setData({
-              user: json,
-              time: formatTime(json.create_at)
+              user: data,
+              time: formatTime(data.create_at)
             });
 
             // Set recent topics and replies to global data
-            app.globalData.recent_topics = json.recent_topics;
-            app.globalData.recent_replies = json.recent_replies;
+            app.globalData.recent_topics = data.recent_topics;
+            app.globalData.recent_replies = data.recent_replies;
           }
         });
       });

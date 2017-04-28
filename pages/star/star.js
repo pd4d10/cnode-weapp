@@ -7,8 +7,7 @@ Page({
     const { loginname } = app.globalData
     request({
       url: `/topic_collect/${loginname}`,
-      success: res => {
-        const json = res.data
+      success: json => {
         this.setData({
           topics: json.data,
         })

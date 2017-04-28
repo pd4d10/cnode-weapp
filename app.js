@@ -56,10 +56,10 @@ App({
           url: "/accesstoken",
           method: "POST",
           data: { accesstoken },
-          success: res => {
+          success: json => {
             // Valid token, save user info
             this.globalData.token = accesstoken;
-            this.globalData.loginname = res.data.loginname;
+            this.globalData.loginname = json.loginname;
           },
           errorExtraHandle(res) {
             // Invalid token
@@ -84,8 +84,8 @@ App({
 
     request({
       url: `/message/count?accesstoken=${token}`,
-      success: res => {
-        if (res.data.data > 0) {
+      success: json => {
+        if (json.data > 0) {
           showMessageToast();
         }
         cb();

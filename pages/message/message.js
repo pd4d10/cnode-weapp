@@ -19,8 +19,8 @@ Page({
 
       request({
         url: `/messages?accesstoken=${token}`,
-        success: res => {
-          const { data } = res.data;
+        success: json => {
+          const { data } = json
           this.setData({
             messages: [...data.hasnot_read_messages, ...data.has_read_messages]
           });

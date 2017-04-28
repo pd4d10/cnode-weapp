@@ -19,10 +19,13 @@ export function request(options) {
           }
           return;
         }
-        options.success(res);
+        options.success(json);
       },
       fail(res) {
         showErrorToast(res.errMsg)
+        if (options.fail) {
+          options.fail(res)
+        }
       }
     })
   );
@@ -95,11 +98,11 @@ export function getToken(cb) {
             url: "/accesstoken",
             method: "POST",
             data: { accesstoken },
-            success(res) {
+            success(json) {
               // Valid token, save user info
               app.globalData.token = accesstoken;
-              app.globalData.loginname = res.data.loginname;
-              app.globalData.avatar_url = res.data.avatar_url;
+              app.globalData.loginname = json.loginname;
+              app.globalData.avatar_url = json.avatar_url;
               cb(accesstoken);
               wx.setStorage({
                 key: "token",
