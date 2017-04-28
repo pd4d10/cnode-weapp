@@ -19,7 +19,9 @@ export function request(options) {
           }
           return;
         }
-        options.success(json);
+        if (options.success) {
+          options.success(json);
+        }
       },
       fail(res) {
         showErrorToast(res.errMsg)
@@ -40,7 +42,8 @@ export function showLoadingToast(title = "加载中") {
   wx.showToast({
     title,
     icon: "loading",
-    mask: true
+    mask: true,
+    duration: 10000,
   });
 }
 
