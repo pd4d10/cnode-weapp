@@ -11,7 +11,7 @@ Page({
         this.setData({
           topics: json.data,
         })
-      }
+      },
     })
   },
 })

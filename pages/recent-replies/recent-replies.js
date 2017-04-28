@@ -3,7 +3,7 @@ Page({
   onLoad(options) {
     const app = getApp()
     this.setData({
-      topics: app.globalData.recent_replies
+      topics: app.globalData.recent_replies,
     })
   },
 })

@@ -1,9 +1,9 @@
-import { getToken, request, showUpdateSuccessToast } from "../../utils";
+import { getToken, request, showUpdateSuccessToast } from '../../utils'
 
 Page({
   data: {
     messages: [],
-    verified: false
+    verified: false,
   },
   onReady(options) {
     this.getMessage()
@@ -14,16 +14,16 @@ Page({
   getMessage(isRefresh = false) {
     getToken(token => {
       this.setData({
-        verified: true
-      });
+        verified: true,
+      })
 
       request({
         url: `/messages?accesstoken=${token}`,
         success: json => {
           const { data } = json
           this.setData({
-            messages: [...data.hasnot_read_messages, ...data.has_read_messages]
-          });
+            messages: [...data.hasnot_read_messages, ...data.has_read_messages],
+          })
           if (isRefresh) {
             showUpdateSuccessToast()
           }
@@ -39,8 +39,8 @@ Page({
         },
         complete() {
           wx.stopPullDownRefresh()
-        }
-      });
-    });
+        },
+      })
+    })
   },
-});
+})
