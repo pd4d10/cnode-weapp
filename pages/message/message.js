@@ -1,4 +1,4 @@
-import { getToken } from "../../utils";
+import { getToken, request } from "../../utils";
 
 Page({
   data: {
@@ -17,7 +17,7 @@ Page({
         verified: true
       });
 
-      wx.requestCNode({
+      request({
         url: `/messages?accesstoken=${token}`,
         success: res => {
           const { data } = res.data;

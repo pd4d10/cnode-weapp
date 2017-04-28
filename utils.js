@@ -1,5 +1,12 @@
 import timeago from "./bower_components/timeago.js/dist/timeago";
 const timeagoInstance = timeago();
+const URL_PREFIX = "https://cnodejs.org/api/v1";
+
+// Simple wrapper for request
+export function request(options) {
+  options.url = `${URL_PREFIX}${options.url}`;
+  return wx.request(options);
+}
 
 export function formatTime(time) {
   return timeagoInstance.format(time, "zh_CN");
@@ -12,6 +19,9 @@ export function onShareAppMessage() {
   };
 }
 
+// Try to get access token
+// If token already exists, use it
+// If no token, call QRCode scan to get token
 export function getToken(cb) {
   const app = getApp();
 
@@ -30,7 +40,7 @@ export function getToken(cb) {
       wx.scanCode({
         success(res) {
           const accesstoken = res.result;
-          wx.requestCNode({
+          request({
             url: "/accesstoken",
             method: "POST",
             data: { accesstoken },

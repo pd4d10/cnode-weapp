@@ -1,5 +1,5 @@
 import Tab from '../../bower_components/zanui-weapp/dist/tab/index'
-import { formatTime, onShareAppMessage } from '../../utils'
+import { formatTime, onShareAppMessage, request } from '../../utils'
 
 Page(Object.assign({}, Tab, {
   data: {
@@ -87,7 +87,7 @@ Page(Object.assign({}, Tab, {
   requestTopics({ page = 1, success, fail, complete }) {
     const tab = this.data.tab.selectedId
     const queryTab = tab === 'all' ? '' : `&tab=${tab}`
-    wx.requestCNode({
+    request({
       url: `/topics?limit=15&page=${page}${queryTab}`,
       success,
       fail,

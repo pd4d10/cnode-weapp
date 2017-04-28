@@ -1,5 +1,5 @@
 import { wxParse } from '../../bower_components/wxParse/wxParse/wxParse.js'
-import { formatTime, getToken } from '../../utils'
+import { formatTime, getToken, request } from '../../utils'
 
 Page({
   data: {
@@ -101,7 +101,7 @@ Page({
       const replyName = this.data.replyName ? `@${this.data.replyName} ` : ''
       const content = `${replyName}${this.data.replyContent}${tail}`
 
-      wx.requestCNode({
+      request({
         url: `/topic/${this.data.topic.id}/replies`,
         method: 'POST',
         data: {
@@ -133,7 +133,7 @@ Page({
   thumb(e) {
     const { id, index } = e.currentTarget.dataset
     getToken(token => {
-      wx.requestCNode({
+      request({
         url: `/reply/${id}/ups`,
         method: 'POST',
         data: {
@@ -169,7 +169,7 @@ Page({
     const { is_collect } = this.data.topic
     const url = `/topic_collect/${is_collect ? 'de_collect' : 'collect'}`
     getToken(token => {
-      wx.requestCNode({
+      request({
         url,
         method: 'POST',
         data: {

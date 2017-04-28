@@ -1,5 +1,5 @@
 import Switch from "../../bower_components/zanui-weapp/dist/switch/index";
-import { formatTime, getToken } from "../../utils";
+import { formatTime, getToken, request } from "../../utils";
 
 Page(
   Object.assign({}, Switch, {
@@ -31,7 +31,7 @@ Page(
           title: "加载中",
           icon: "loading"
         });
-        wx.requestCNode({
+        request({
           url: `/user/${loginname}`,
           success: res => {
             const json = res.data.data;

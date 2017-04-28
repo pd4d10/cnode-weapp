@@ -1,10 +1,4 @@
-const PREFIX = "https://cnodejs.org/api/v1";
-
-// Simple wrapper for request
-wx.requestCNode = options => {
-  options.url = `${PREFIX}${options.url}`;
-  return wx.request(options);
-};
+import { request } from './utils'
 
 // Storage keys
 // token - access token
@@ -58,7 +52,7 @@ App({
       success: res => {
         const accesstoken = res.data;
         // Check if token is valid
-        wx.requestCNode({
+        request({
           url: "/accesstoken",
           method: "POST",
           data: { accesstoken },
@@ -90,10 +84,10 @@ App({
       return;
     }
 
-    wx.requestCNode({
+    request({
       url: `/message/count?accesstoken=${token}`,
       success: res => {
-        if (res.data > 0) {
+        if (res.data.data > 0) {
           wx.showToast({
             title: "有新消息"
           });
