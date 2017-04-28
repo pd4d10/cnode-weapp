@@ -15,8 +15,12 @@ Page({
     this.fetchTopic(options.id)
   },
   fetchTopic(id) {
+    const app = getApp()
+    const { token } = app.globalData
+    const query = token ? `?accesstoken=${token}` : ''
+
     wx.request({
-      url: `https://cnodejs.org/api/v1/topic/${id}`,
+      url: `https://cnodejs.org/api/v1/topic/${id}${query}`,
       success: (res) => {
         const json = res.data.data
         wx.setNavigationBarTitle({
@@ -71,8 +75,8 @@ Page({
   showDialog(e) {
     this.setData({
       isDialogVisible: true,
-      replyContent: `@${e.target.dataset.name} `,
-      replyId: e.target.dataset.id,
+      replyContent: `@${e.currentTarget.dataset.name} `,
+      replyId: e.currentTarget.dataset.id,
     })
   },
   hideDialog() {
@@ -115,6 +119,67 @@ Page({
             }, 500)
           }
         // }, 2000)
+        }
+      })
+    })
+  },
+  thumb(e) {
+    const { id, index } = e.currentTarget.dataset
+    getToken(token => {
+      wx.requestCNode({
+        url: `/reply/${id}/ups`,
+        method: 'POST',
+        data: {
+          accesstoken: token,
+        },
+        success: res => {
+          const json = res.data
+          if (!json.success) {
+            wx.showToast({
+              title: json.error_msg
+            })
+            return
+          }
+
+          const isUp = json.action === 'up'
+          const ups = this.data.replies[index].ups.slice()
+          // Can't get reply id
+          if (isUp) {
+            ups.push('me')
+          } else {
+            ups.pop()
+          }
+          this.setData({
+            [`replies[${index}].is_uped`]: isUp,
+            [`replies[${index}].ups`]: ups,
+          })
+        }
+      })
+    })
+  },
+  star(e) {
+    const { id } = e.currentTarget.dataset
+    const { is_collect } = this.data.topic
+    const url = `/topic_collect/${is_collect ? 'de_collect' : 'collect'}`
+    getToken(token => {
+      wx.requestCNode({
+        url,
+        method: 'POST',
+        data: {
+          accesstoken: token,
+          topic_id: id,
+        },
+        success: res => {
+          const json = res.data
+          if (!json.success) {
+            wx.showToast({
+              title: json.error_msg
+            })
+            return
+          }
+          this.setData({
+            'topic.is_collect': !is_collect
+          })
         }
       })
     })

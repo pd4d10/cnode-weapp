@@ -9,6 +9,7 @@
       <text class="name">{{topic.author.loginname}}</text>
       <text class="create-at">创建于{{create_at}} {{topic.visit_count}} 次浏览</text>
     </view>
+    <view class="star" data-id="{{topic.id}}" bindtap="star" hover hover-class="star-active">{{topic.is_collect ? '取消' : ''}}收藏</view>
   </view>
   <template is="wxParse" data="{{wxParseData:content.nodes}}" />
   <view class="reply-title">共 {{topic.reply_count}} 条回复</view>
@@ -19,7 +20,16 @@
         <view class="reply-name">{{item.author.loginname}}</view>
         <view class="reply-time">{{reply_create_at[index]}}</view>
       </view>
-      <view class="reply-add" data-id="{{item.id}}" data-name="{{item.author.loginname}}" bindtap="showDialog" hover hover-class="reply-add-active">回复</view>
+      <view class="operate">
+        <view class="thumb" data-id="{{item.id}}" data-index="{{index}}" bindtap="thumb">
+          <image wx:if="{{!item.is_uped}}" src="/icons/thumb.svg" />
+          <image wx:if="{{item.is_uped}}" src="/icons/thumb-active.svg" />
+          <text>{{item.ups.length}}</text>
+        </view>
+        <view class="reply-add" data-id="{{item.id}}" data-name="{{item.author.loginname}}" bindtap="showDialog" hover hover-class="reply-add-active">
+          <image src="/icons/reply.svg" />
+        </view>
+      </view>
     </view>
     <template is="wxParse" data="{{wxParseData:replies_html[index].nodes}}" />
   </view>

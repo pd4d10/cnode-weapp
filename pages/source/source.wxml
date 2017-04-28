@@ -1,4 +1,3 @@
 <view class="container">
-  <view class="tip">长按可复制</view>
   <text class="url" selectable>https://github.com/pd4d10/cnode-weapp</text>
 </view>

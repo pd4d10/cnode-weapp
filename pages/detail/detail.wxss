@@ -13,6 +13,7 @@
 
 .user {
   margin: 12px 0;
+  position: relative;
 }
 
 .avatar {
@@ -40,9 +41,27 @@
   color: #555;
 }
 
+.star {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px 8px;
+  line-height: 1;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 4px;
+  background-color: #80bd01;
+  letter-spacing: 2px;
+}
+
+.star-active {
+  background-color: #6ba44e;
+}
+
 .reply {
   padding: 8px 0;
   border-bottom: 1px solid #eee;
+  position: relative;
 }
 
 .reply-title {
@@ -50,10 +69,6 @@
   padding: 6px;
   font-weight: 400;
   font-size: 16px;
-}
-
-.reply-user {
-  position: relative;
 }
 
 .reply-avatar {
@@ -83,20 +98,29 @@
   line-height: 24px;
 }
 
-.reply-add {
+.operate {
   position: absolute;
   right: 0;
-  top: -6px;
+  top: 4px;
   font-size: 14px;
   line-height: 1;
-  padding: 10px;
   color: #08c;
-  border-radius: 2px;
+  border-radius: 4px;
+  display: flex;
+}
+
+.operate > view {
+  padding: 4px;
+}
+
+.operate image {
+  width: 20px;
+  height: 20px;
 }
 
 .reply-add-active {
-  color: #fff;
-  background: #08c;
+  /*color: #fff;
+  background: #08c;*/
 }
 
 .reply-dialog {
