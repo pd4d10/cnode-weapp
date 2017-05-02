@@ -27,6 +27,13 @@ CNode weapp 是为 CNode 社区开发的微信小程序客户端。
 3. 在开发者工具中将此 AppID 与项目关联起来
 4. 在开发者工具中，点击左侧“项目”，点击“预览”，代码上传成功后会弹出一个二维码，打开微信扫码即可
 
+## 截图
+
+<img src="assets/1.png" width="400" />
+<img src="assets/2.png" width="400" />
+<img src="assets/3.png" width="400" />
+<img src="assets/4.png" width="400" />
+
 ## License
 
 MIT
