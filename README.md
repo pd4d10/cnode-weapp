@@ -29,10 +29,10 @@ CNode weapp 是为 CNode 社区开发的微信小程序客户端。
 
 ## 截图
 
-<img src="assets/1.png" width="400" />
-<img src="assets/2.png" width="400" />
-<img src="assets/3.png" width="400" />
-<img src="assets/4.png" width="400" />
+<span><img src="assets/1.png" width="400" /></span>
+<span><img src="assets/2.png" width="400" /></span>
+<span><img src="assets/3.png" width="400" /></span>
+<span><img src="assets/4.png" width="400" /></span>
 
 ## License
 
